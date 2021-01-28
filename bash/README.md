@@ -53,6 +53,7 @@ Generate a key pair
 Only stderr
 ```sh
 2>/dev/null  
+```
 
 Only stdout
 ```sh
