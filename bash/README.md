@@ -74,6 +74,20 @@ then
  ...
 fi
 ```
+
+Check if a file exists:
+```sh
+exists=$( 2>/dev/null ls ${MAINDIR}/${TFFILE} )
+if [ -z "${exists}" ]
+then
+  echo "File ${MAINDIR}/${TFFILE} does not exists"
+else
+ ...
+fi
+```
+
+
+
 ### Arrays
 
 Declare arrays
@@ -150,4 +164,24 @@ Examples
 ```sh
 var1=$(echo ls -lrt)
 var2=$(cat file.log)
+```
+
+### String manipulation
+
+Check if a string contains only alphanumeric and {"```-```", "```_```"} characters.
+```sh
+if [[ "${ENVNAME}" =~ ^[a-zA-Z0-9_-]+$ ]]
+then
+  echo "${ENVNAME}"
+else
+  echo "${ERRMSSGA}"
+  exit
+fi
+```
+
+### File manipulation
+
+Replace all "word" occurencies by "new" in all file "FILE"
+```sh
+sed -i -e "s/word/new/g" FILE
 ```
