@@ -1,3 +1,6 @@
+[Bash utilities]
+[File management]
+
 [Bash utilities]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#bash-utilities>
 [File Management]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#file-management>
 
