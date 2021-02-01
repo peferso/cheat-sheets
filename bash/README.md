@@ -203,6 +203,21 @@ do
 done < "${pathToFile}"
 ```
 
+Replace a string substring by a new one
+```sh
+string="a new new test"
+substring="new"
+newone="old"
+echo "${string/$substring/$newone}" 
+```
+
+Replace all occurrences in a string of a substring by a new one
+```sh
+message='The secret key is 431241'
+echo "${message//[0-9]/X}"           
+# prints 'The secret key is XXXXX'
+```
+
 
 ### File manipulation
 
