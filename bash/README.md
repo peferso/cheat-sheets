@@ -128,7 +128,7 @@ newArray=( "${oldArray[@]}" )
 Example of declaring a function called "fun"
 ```sh
 fun () {
- echo "Hello World! My name is $0 and I like $2"
+ echo "Hello World! My name is $0 and I like $1"
 }
 ```
 so that, we invoke it as follows:
