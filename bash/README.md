@@ -1,6 +1,9 @@
 [Bash utilities]
+
 |__[System management]
+
 |____[Processes]
+
 |____[Connectivity]
 
 
