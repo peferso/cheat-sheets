@@ -158,6 +158,12 @@ func_splitter "$string" "$delimiter"
 echo "${array[@]}"
 ```
 
+Simply split a string in two parts 
+```sh
+partLeft=${string%%"$delimiter"*}
+partRight=${string#*"$delimiter"}
+```
+
 ### Store stdout into a variable
 
 Examples
@@ -178,6 +184,25 @@ else
   exit
 fi
 ```
+
+Read a string line by line:
+```sh
+#!/bin/bash
+while IFS= read -r line
+do
+  echo "$line"
+done <<< "${string}"
+```
+
+Read a file line by line:
+```sh
+#!/bin/bash
+while IFS= read -r line
+do
+  echo "$line"
+done < "${pathToFile}"
+```
+
 
 ### File manipulation
 
