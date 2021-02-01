@@ -1,8 +1,13 @@
 [Bash utilities]
-[File management]
+|__[System management]
+|____[Processes]
+|____[Connectivity]
+
 
 [Bash utilities]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#bash-utilities>
-[File Management]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#file-management>
+[System Management]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#system-management>
+[Processes]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#processes>
+[Connectivity]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#connectivity>
 
 # Bash utilities
 
