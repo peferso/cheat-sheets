@@ -1,21 +1,15 @@
 [Bash utilities]
 
-|
 |----[System management]
 
-|
 |---------[Processes]
 
-|
 |---------[Connectivity]
 
-|
 |---------[File management]
 
-|
 |---------[ssh]
 
-|
 |----[Bash programming]
 
 
