@@ -161,7 +161,7 @@ fun "Peter" "bash programming"
 
 ### Split a string using a delimiter
 
-Function that splits a string and stores elements splitted into an array
+Function that splits a string and stores elements splitted in an array
 ```sh
 func_splitter() {
   str=$1
@@ -187,7 +187,7 @@ partLeft=${string%%"$delimiter"*}
 partRight=${string#*"$delimiter"}
 ```
 
-### Store stdout into a variable
+### Store stdout in a variable
 
 Examples
 ```sh
@@ -247,4 +247,11 @@ echo "${message//[0-9]/X}"
 Replace all "word" occurencies by "new" in all file "FILE"
 ```sh
 sed -i -e "s/word/new/g" FILE
+```
+
+### Date-Time stamp
+
+Store current date-time stamp in a variable
+```sh
+dtimestamp=$( echo "$(date +'%Y%m%d-%H_%M_%S_%3N')" )
 ```
