@@ -1,16 +1,16 @@
 [Bash utilities]
 
-|---o[System management]
+|---o [System management]
 
-|--------+[Processes]
+|--------+ [Processes]
 
-|--------+[Connectivity]
+|--------+ [Connectivity]
 
-|--------+[File management]
+|--------+ [File management]
 
-|--------+[ssh]
+|--------+ [ssh]
 
-|---o[Bash programming]
+|---o [Bash programming]
 
 
 [Bash utilities]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#bash-utilities>
