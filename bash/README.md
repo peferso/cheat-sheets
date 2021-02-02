@@ -146,6 +146,13 @@ Create a new array copying an existing one
 ```sh
 newArray=( "${oldArray[@]}" )
 ```
+
+Print the number of elements of an array
+```sh
+echo "${#array[@]}"
+```
+
+An 
 ### Functions
 
 Example of declaring a function called "fun"
