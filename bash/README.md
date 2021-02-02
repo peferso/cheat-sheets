@@ -1,7 +1,5 @@
-[Bash utilities]
-
-|---o [System management]
-
+[Bash utilities]\n
+|---o [System management]\n
 |--------+ [Processes]
 
 |--------+ [Connectivity]
