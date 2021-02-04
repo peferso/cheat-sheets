@@ -47,7 +47,7 @@ Disable connection host key validation on the first connection (avoid to promt a
 [defaults]
 host_key_checking = False
 ```
-in a ansible.cfg file on the same folder as the playbook. To do it system-wide or for further info check this stackoverflow [question]: <https://stackoverflow.com/questions/32297456/how-to-ignore-ansible-ssh-authenticity-checking>
+in a ansible.cfg file on the same folder as the playbook. To do it system-wide or for further info check this stackoverflow [question]:<https://stackoverflow.com/questions/32297456/how-to-ignore-ansible-ssh-authenticity-checking>
 
 ## Run a playbook
 
