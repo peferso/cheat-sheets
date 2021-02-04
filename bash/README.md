@@ -69,6 +69,24 @@ ssh -i "path_to_pem_file" user@dns
 
 Generate a key pair
 
+### Environment variables
+
+Create a new one using the terminal
+```sh
+export NEWVAR="something"
+```
+
+Delete an existing environment variable:
+```sh
+unset NEWVAR
+```
+
+You can also add the variables permanently to the environment
+```sh
+echo 'NEWVAR="content/asdf"' >> /etc/environment
+echo 'PUBLIC_IP='$PUBLIC_IP >> /etc/environment
+```
+
 ## Bash programming
 
 ### Redirect stderr and stdout to trash
@@ -262,3 +280,5 @@ Store current date-time stamp in a variable
 ```sh
 dtimestamp=$( echo "$(date +'%Y%m%d-%H_%M_%S_%3N')" )
 ```
+
+
