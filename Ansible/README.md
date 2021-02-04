@@ -42,6 +42,13 @@ Check your inventory:
 $ ansible-inventory –-list -y
 ```
 
+Disable connection host key validation on the first connection (avoid to promt a yes input the first time you ssh to a host) by placing the following
+```sh
+[defaults]
+host_key_checking = False
+```
+in a ansible.cfg file on the same folder as the playbook. To do it system-wide or for further info check this stackoverflow [question]: <https://stackoverflow.com/questions/32297456/how-to-ignore-ansible-ssh-authenticity-checking>
+
 ## Run a playbook
 
 In the Ansible playbook folder, run:
