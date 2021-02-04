@@ -2,7 +2,7 @@
 Show users:
 ```sh
 select * from mysql.user;
-select Host, User, password_last_changed from mysql.user;
+select Host, User, password_last_changed, plugin from mysql.user;
 ```
 
 Show columns info
