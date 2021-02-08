@@ -87,6 +87,32 @@ echo 'NEWVAR="content/asdf"' >> /etc/environment
 echo 'PUBLIC_IP='$PUBLIC_IP >> /etc/environment
 ```
 
+### Groups and users
+
+Create a group
+```sh
+sudo groupadd jenkinsGroup
+```
+
+Add an existing user to a group
+```sh
+sudo usermod -a -G ec2-user jenkins
+```
+
+Display all users
+```sh
+cat /etc/passwd
+```
+
+Display user groups
+```sh
+id ec2-user
+```
+
+Create a new user and assign groups in a single command
+```sh
+sudo useradd -g primary_group -G sec_groupA,sec_groupB new_user
+```
 ## Bash programming
 
 ### Redirect stderr and stdout to trash
