@@ -60,6 +60,16 @@ File can be ```*``` for all files in the working directory.
 
 File can be ```-r``` to search recursively in all files and directories contained in the working directory.
 
+Find all files with a given name pattern inside a folder
+```sh
+find /folder -type f -name '*.html'
+```
+
+By exact name
+```sh
+find -type f -name exact-name.ext
+```
+
 ### ssh
 
 Ssh using an existing private key .pem file
