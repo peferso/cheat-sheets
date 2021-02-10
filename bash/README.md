@@ -123,6 +123,13 @@ Create a new user and assign groups in a single command
 ```sh
 sudo useradd -g primary_group -G sec_groupA,sec_groupB new_user
 ```
+
+Change to a user of a service account (without shell by design), such as jenkins user. It is necessary to specify the shell explicitly in these cases:
+```sh
+sudo su -s /bin/bash jenkins
+```
+
+
 ## Bash programming
 
 ### Redirect stderr and stdout to trash
