@@ -22,7 +22,8 @@ For this, you need to be sure of what port is using the Jenkins service:
 ```sh
 sudo cat /etc/sysconfig/jenkins | grep JENKINS_PORT
 ```
-Normally it should be port 8080.
+Normally it should be port 8080. If another service is using the same port as Jenkins, we can modify the value of ```JENKINS_PORT``` 
+to a port which is not used.
 
 
 
