@@ -67,6 +67,29 @@ The motivation of this alias is the following: every time an EC2 instance is sto
 
 Once you navigate to your Jenkins url, you must introduce the initial admin password retrieved in a former step. Accept the default plugin installation or customize your choice, enter an admin username and password, and after that you are ready to use Jenkins.
 
+## Jenkins agent
+
+Jenkins configures a unix user, called service user, which doesn't have a shell associated. To login to the jenkins user run:
+```sh
+sudo su -s /bin/bash jenkins
+```
+Jenkins creates a folder per job or pipeline in:
+```sh
+/var/lib/jenkins/workspace
+```
+you can check the root directory of Jenkins in Control Panel -> Configuration. 
+
+It is possible to add Jenkins environment variables to the existing ones. 
+This variables are shared among jobs and can be used by pipeline scripts as normal unix environment variables. 
+Check the Jenkins environment variables in 
+
+* http://localhost:8080/env-vars.html
+* http://publicIP:JENKINS_PORT/env-vars.html
+
 ## Create a pipeline
 
+In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful to create a workspace folder to store the .tf project as follows
 
+/var/lib/jenkins/workspaces
+
+### Pipeline with script hosted 
