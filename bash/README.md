@@ -1,26 +1,3 @@
-[Bash utilities]
-
-|---o [System management]
-
-|--------+ [Processes]
-
-|--------+ [Connectivity]
-
-|--------+ [File management]
-
-|--------+ [ssh]
-
-|---o [Bash programming]
-
-
-[Bash utilities]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#bash-utilities>
-[System Management]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#system-management>
-[Processes]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#processes>
-[Connectivity]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#connectivity>
-[File management]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#file-management>
-[ssh]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#ssh>
-[Bash programming]: <https://github.com/peferso/cheat-sheets/blob/main/bash/README.md#bash-programming>
-
 # Bash utilities
 
 ## System management
