@@ -1,6 +1,6 @@
 # Jenkins cheat-sheet
 
-This is just a set of tools that I find usefull to gather here for future reference.
+This is just a set of tools and info that I find usefull to gather here for future reference.
 
 ## Jenkins installation in an EC2 instance using Amazon Linux 2
 
@@ -21,8 +21,14 @@ sudo service jenkins restart
 sudo service jenkins stop
 sudo service jenkins status
 ```
+### Location of the initial Jenkins user password
 
-### Starting Jenkins
+To retrieve the initial admin password necessary in the Jenkins installation, in the case of a unix system:
+```sh
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+### Starting Jenkins 1: Jenkins port
 
 To start using Jenkins, you need to be sure of which port is using the jenkins service:
 ```sh
@@ -36,15 +42,25 @@ In case you want to test which ports are opened, and which services are listenin
 sudo netstat -tulpn | grep LISTEN
 ```
 
-### Using Jenkins installed in an EC2 instance
+### Starting Jenkins 2: Using Jenkins installed in an EC2 instance
 
 IMPORTANT: It is necessary to add a *rule* to the *security group* of the EC2 instance hosting Jenkins. The rule should allow custom tcp (_TCP personalizada_ in Spanish) traffic type, 
 allowing traffic from the IP range needed in your case (origin) through the ```JENKINS_PORT``` value. 
 
-### Location of the initial Jenkins user password
+### Starting Jenkins 3: finish Jenkins installation using the web browser
 
-To retrieve the initial admin password necessary in the Jenkins installation, in the case of a unix system:
+Now you should be able to open Jenkins. You need to navigate to _http:/localhost:JENKINS_PORT_ in the case that you installed Jenkins on your PC, or to _http:public IP:JENKINS_PORT_ if it is installed in a remote host. As it should be in the case of Jenkins hosted on an EC2 instance. In this case you can retrieve the value of the public IP or public DNS from the console, or using the shell:
 ```sh
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+PUBLIC_IP=$(curl -s ifconfig.co)
+echo $PUBLIC_IP
+```
+I found useful to create an alias which prints out Jenkins address, including the following line at the end of ```/home/ec2-user/.bashrc``` :
+```sh
+alias showJenkinsURL='dum=\$(curl -s ifconfig.co);echo http://\${dum}:8080'
+```
+so that, a possible output could be:
+```sh
+$ showJenkinsURL
+http://102.321.21.3:8080
 ```
 
