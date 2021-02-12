@@ -96,12 +96,12 @@ In my experience automating the implementation of Terraform templates with Jenki
 ```
 so that jobs/pipelines managing Terraform ressources would clone the repositories containing the templates inside the former folder:
 ```sh
-/var/lib/jenkins/workspaces/terraform-workspaces/TF_JOB_REPOSITORY
+/var/lib/jenkins/workspaces/terraform-workspaces/TF_PIPELINE_REPOSITORY
 ```
 and refer to it for their tasks. In this way, the ```.tfstate``` file will be the same for all pipelines related to each Terraform repository if well configured.
 Note that any environment variable that the jenkins service user needs when running the pipelines must be declared in Jenkins.
 
-### Pipeline with script hosted in github
+### Declarative pipeline with script hosted in github
 
 1. Create a new pipeline project, give it a name, and select "multibranch pipeline" type.
 2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored. For test purposes I have only explored using a public repository as code source in this step, to get rid of credentials.
