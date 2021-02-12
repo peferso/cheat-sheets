@@ -77,19 +77,27 @@ Jenkins creates a folder per job or pipeline in:
 ```sh
 /var/lib/jenkins/workspace
 ```
-you can check the root directory of Jenkins in Control Panel -> Configuration. 
+you can check the root directory of Jenkins in Control Panel -> Configuration  _http://publicIP:JENKINS_PORT/configure_. 
 
-It is possible to add Jenkins environment variables to the existing ones. 
+It is possible to add Jenkins environment variables to the existing ones in _http://publicIP:JENKINS_PORT/configure_.
 This variables are shared among jobs and can be used by pipeline scripts as normal unix environment variables. 
-Check the Jenkins environment variables in 
+Check the Jenkins environment variables in:
 
-* http://localhost:8080/env-vars.html
-* http://publicIP:JENKINS_PORT/env-vars.html
+* _http://localhost:8080/env-vars.html_
+* _http://publicIP:JENKINS_PORT/env-vars.html_
+
+
 
 ## Create a pipeline
 
-In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful to create a workspace folder to store the .tf project as follows
-
-/var/lib/jenkins/workspaces
+In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful set the jobs/pipeline to create a workspace folder to store the .tf project as follows
+```sh
+/var/lib/jenkins/workspaces/terraform-workspaces
+```
+so that Terraform management jobs/pipelines would clone the repositories containing the templates inside the former folder.:
+```sh
+/var/lib/jenkins/workspaces/terraform-workspaces/TF_JOB_REPOSITORY
+```
+In this way, the ```.tfstate``` file will be the same for all pipelines related to each Terraform repository if well configured.
 
 ### Pipeline with script hosted 
