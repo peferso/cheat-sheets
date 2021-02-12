@@ -90,11 +90,11 @@ Check the Jenkins environment variables in:
 
 ## Create a pipeline
 
-In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful set the jobs/pipeline to create a workspace folder to store the .tf project as follows
+In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful giving instructions to the jobs/pipelines of creating a workspace folder to store the ```.tf``` project as follows
 ```sh
 /var/lib/jenkins/workspaces/terraform-workspaces
 ```
-so that Terraform management jobs/pipelines would clone the repositories containing the templates inside the former folder.:
+so that jobs/pipelines managing Terraform ressources would clone the repositories containing the templates inside the former folder:
 ```sh
 /var/lib/jenkins/workspaces/terraform-workspaces/TF_JOB_REPOSITORY
 ```
