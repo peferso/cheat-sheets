@@ -107,5 +107,10 @@ Note that any environment variable that the jenkins service user needs when runn
 2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored.
 3. Select the branch that Jenkins must explore (if not master), and in "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
 ![Set the path to the pipeline script in the configuration](./Captura.PNG)
+4. Leave the rest of options as default (if you want) and finish clicking OK.
 
+It will start searching the pipeline script on the path given and will clone it into the pipeline workspace inside
+```sh
+/var/lib/jenkins/workspaces/**pipelineworkspace**/**repository**
+```
 
