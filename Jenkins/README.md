@@ -63,4 +63,5 @@ so that, a possible output could be:
 $ showJenkinsURL
 http://102.321.21.3:8080
 ```
+The motivation of this alias is the following: every time an EC2 instance is stopped, the public IP is lost; when the instance is restarted, the data is still there, you will find the same jobs and pipelines, but a new public IP will be associated. With this command it is easy to retrieve the Jenkins url everytime you ssh access the EC2 instance after it is restarted.
 
