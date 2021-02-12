@@ -90,7 +90,7 @@ Check the Jenkins environment variables in:
 
 ## Create a pipeline
 
-In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful giving instructions to the jobs/pipelines of creating a workspace folder to store the ```.tf``` project as follows
+In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful giving instructions to the jobs/pipelines for creating a workspace folder to store the ```.tf``` project as follows
 ```sh
 /var/lib/jenkins/workspaces/terraform-workspaces
 ```
@@ -98,6 +98,14 @@ so that jobs/pipelines managing Terraform ressources would clone the repositorie
 ```sh
 /var/lib/jenkins/workspaces/terraform-workspaces/TF_JOB_REPOSITORY
 ```
-In this way, the ```.tfstate``` file will be the same for all pipelines related to each Terraform repository if well configured.
+and refer to it for their tasks. In this way, the ```.tfstate``` file will be the same for all pipelines related to each Terraform repository if well configured.
+Note that any environment variable that the jenkins service user needs when running the pipelines must be declared in Jenkins.
 
-### Pipeline with script hosted 
+### Pipeline with script hosted in github
+
+1. Create a new pipeline project, give it a name, and select "multibranch pipeline" type.
+2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored.
+3. Select the branch that Jenkins must explore (if not master), and in "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
+![Set the path to the pipeline script in the configuration](./Jenkins/Captura.PNG)
+
+
