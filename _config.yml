@@ -1,0 +1,4 @@
+theme: jekyll-theme-leap-day
+include:
+  - README.md
+  - bash/README.md
