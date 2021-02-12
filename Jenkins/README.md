@@ -104,12 +104,13 @@ Note that any environment variable that the jenkins service user needs when runn
 ### Pipeline with script hosted in github
 
 1. Create a new pipeline project, give it a name, and select "multibranch pipeline" type.
-2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored.
-3. Select the branch that Jenkins must explore (if not master), and in "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
+2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored. For test purposes I have only explored using a public repository as code source in this step, to get rid of credentials.
+3. Select the branch that Jenkins must explore (if it is master, leave it be), and in "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
 ![Set the path to the pipeline script in the configuration](./Captura.PNG)
+This is useful if you want to have multiple declarative pipelines in the same github repository. The ```Jenkinsfile```'s will be stored in different folders.
 4. Leave the rest of options as default (if you want) and finish clicking OK.
 
-It will start searching the pipeline script on the path given and will clone it into the pipeline workspace inside
+Jenkins will start searching the pipeline script on the path given and will clone it into the pipeline workspace inside
 ```sh
 /var/lib/jenkins/workspaces/**pipelineworkspace**/**repository**
 ```
