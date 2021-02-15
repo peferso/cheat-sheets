@@ -124,7 +124,7 @@ and it will start performing the steps therein.
 
 ### Declarative pipeline of scheduled jobs 
 
-You can set the jobs to be built on determined times. For this, you need to provide the time choices in the CRON syntax.
+You can set the jobs to be built on specific times or frequencies. For this, you need to provide the time choices in the CRON syntax.
 Add the following code to the pipeline:
 ```sh
 pipeline {
@@ -147,6 +147,6 @@ Minute Hour DayInMonth Month DayInWeek
 So, for example, to trigger the pipeline every saturday and sunday at 19.06 the syntax would be:
 ```sh
     triggers {
-        cron('06 19 * * 6,7')
+        cron('6 19 * * 6,7')
     }
 ```
