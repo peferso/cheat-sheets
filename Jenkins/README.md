@@ -105,13 +105,48 @@ Note that any environment variable that the jenkins service user needs when runn
 
 1. Create a new pipeline project, give it a name, and select "multibranch pipeline" type.
 2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored. For test purposes I have only explored using a public repository as code source in this step, to get rid of credentials.
-3. Select the branch that Jenkins must explore (if it is master, leave it be), and in "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
+3. Select the branch that Jenkins must explore. I found useful to identify the branch by the name, adding
+* Filter by name (with wildcards)
+to the "Behaviours" section.
+And setting it to the name of the branch.
+In "Build configuration" edit "script path" to match the path of the desired pipeline script inside the repository:
 ![Set the path to the pipeline script in the configuration](./Captura.PNG)
 This is useful if you want to have multiple declarative pipelines in the same github repository. The ```Jenkinsfile```'s will be stored in different folders.
+If you don't want Jenkins to build the job after scanning the repository, in Property strategy add the property
+* Suppress automatic SCM triggering
 4. Leave the rest of options as default (if you want) and finish clicking OK.
 
-Jenkins will start searching the pipeline script on the path given and will clone it into the pipeline workspace inside
+Jenkins will start searching the pipeline script on the path given. You can manually trigger the repository scan. Once you "build" the job, Jenkins will clone the Jenkinsfile into the pipeline workspace inside
 ```sh
 /var/lib/jenkins/workspaces/**pipelineworkspace**/**repository**
 ```
+and it will start performing the steps therein.
 
+### Declarative pipeline of scheduled jobs 
+
+You can set the jobs to be built on determined times. For this, you need to provide the time choices in the CRON syntax.
+Add the following code to the pipeline:
+```sh
+pipeline {
+    . . .
+    
+    triggers {
+        cron('*/2 * * * *')
+    }
+    
+    . . .
+    stages {
+    . . .
+    }  
+}
+```
+where in the example above the pipeline will be triggered every 2 minutes. The CRON syntax is:
+```sh
+Minute Hour DayInMonth Month DayInWeek 
+```
+So, for example, to trigger the pipeline every saturday and sunday at 19.06 the syntax would be:
+```sh
+    triggers {
+        cron('06 19 * * 6,7')
+    }
+```
