@@ -86,7 +86,17 @@ Check the Jenkins environment variables in:
 * _http://localhost:8080/env-vars.html_
 * _http://publicIP:JENKINS_PORT/env-vars.html_
 
+### Add jenkins to the sudoers:
 
+As root edit the file ```/etc/sudoers``` appending the line
+```sh
+jenkins ALL=(ALL) NOPASSWD: ALL
+```
+
+### Jenkins and ssh keys
+
+You might need Jenkins to connect to remote hosts, e.g., when running Ansible playbooks. In that case, you need to have the necessary ssh key pair.
+They must be located in ```/var/lib/jenkins/.ssh```.
 
 ## Create a pipeline
 
@@ -150,3 +160,4 @@ So, for example, to trigger the pipeline every saturday and sunday at 19.06 the 
         cron('6 19 * * 6,7')
     }
 ```
+
