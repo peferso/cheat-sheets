@@ -54,7 +54,22 @@ Ssh using an existing private key .pem file
 ssh -i "path_to_pem_file" user@dns
 ```
 
-Generate a key pair
+Generate a key pair... [TODO]
+
+For a specific user, the key pairs are stored in the corresponding home under ```.ssh```, e.g.,
+```sh
+/home/ec2-user/.ssh
+/var/lib/jenkins/.ssh
+```
+on ```.ssh``` the ```id_rsa``` is the private key and ```id_rsa.pub``` is the public key. 
+The public key file contains one line which is the public key indeed.
+Note that any possible destination host must have this public key included in its ```authorized_keys``` file, also inside ```.ssh```.
+
+If you bring an already existing key to a new user, you should create the ```id*``` files as the user and copy the keys. Finally, they need to have 600 permissions:
+```sh
+sudo chmod 600 $privateKeyFile
+sudo chmod 600 $publicKeyFile
+```
 
 ### Environment variables
 
