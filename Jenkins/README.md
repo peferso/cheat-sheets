@@ -115,10 +115,10 @@ Note that any environment variable that the jenkins service user needs when runn
 
 1. Create a new pipeline project, give it a name, and select "multibranch pipeline" type.
 2. On the "branch source" section, introduce the url of your github project where the pipeline script is stored. For test purposes I have only explored using a public repository as code source in this step, to get rid of credentials.
-3. Select the branch that Jenkins must explore. I found useful to identify the branch by the name, adding
+3. Select the branch that Jenkins must explore. In **Behaviours** leave **Discover branches** with the option "Exclude branches that are also filed as PRs" to omit new branches. I found useful to identify the specific branch that we want by the name, adding
 * **Filter by name (with wildcards)**
 to the **Behaviours** section.
-And setting it to the name of the branch.
+And setting it to the name of the branch (e.g, "main").
 In **Build configuration** edit **Script path** to match the path of the desired pipeline script inside the repository:
 ![Set the path to the pipeline script in the configuration](./Captura.PNG)
 This is useful if you want to have multiple declarative pipelines in the same github repository. The ```Jenkinsfile```'s will be stored in different folders.
