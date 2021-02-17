@@ -56,7 +56,7 @@ The credentials are associated to AWS **users**, which are further associated to
   * Take note of the public and secret access keys
 
 Example of public and private user access keys are: `AKFAQNOK7RH4RAFKTWWJ` and `GGlxnpdnnQzGAlKm4LThSjQohZ8kP1IRimUdGzfd`.
-The next step is to run the configuration and provide the necessary parameters (keys, AWS region and output format):
+The next step is to run the initial CLI configuration and provide the necessary parameters (keys, AWS region and output format):
 ```sh
 $ aws configure
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
