@@ -1,6 +1,5 @@
 
-| :--- | ---: |
-|      | Return to **[main page](../README.md)** |
+Return to **[main page](../README.md)** 
 
 ***
 
