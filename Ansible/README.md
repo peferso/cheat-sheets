@@ -29,6 +29,7 @@ $ ssh-copy-id root@destinationIPaddress
 ```
 
 If this does not work, it should be done manually, or dynamically during the instance creation.
+For the latter check **ssh access to EC2 instances** in [AWS](../AWS/README.md)
 
 ## Check connections to hosts
 
@@ -99,7 +100,42 @@ Note how in the example above we are registering the shell output of the command
 
 > In YAML indentation should be always with spaces and not tabs, and its crucial to respect indentation since a new block starts when a line with smaller indentation is found. 
 
-A useful 
+It may be useful to use the value of variables in other tasks of the same play. We can further create more variables. The following is an example of how to declare a variable to store a password and perform a login test:
+```yaml
+---
+- name: configure database server
+  hosts: EC2Database
+  become: yes
+  remote_user: ec2-user
+  vars:
+      mysqlrootpasswd: "Perr0_Pat0"
+
+  tasks:
+  
+...
+
+  - name: Test of root login
+    shell:
+      cmd: mysql -e "" -uroot -p{% raw %}{{ mysqlrootpasswd }}{% endraw %} 2>&1
+    register: rootLoginTest
+    ignore_errors: yes
+```
+We can see that this is a play to configure a database server, and we have a block called `vars:` where we define a variable called `mysqlrootpasswd`. This variable is later used in a task consisting in a login test as root user in mySQL. The result of the test is stored in another variable called `rootLoginTest`, and we ignore possible errors occurring during this task (we don't care if the login fails or succeeds). Note the syntax ```{% raw %}{{ mysqlrootpasswd }}{% endraw %}``` necessary to access the value of the variable.
+
+## Python discovery
+
+Ansible will discover the python interpreter in each destination host. 
+Although, we can tell Ansible to use a specific python version installed in the destination host by providing the path in the Ansible environment variable: `ansible_python_interpreter`. This can be done in three ways:
+* Using a custom `.cfg` file to run the playbook
+* Changing the variable globally, for all the playbooks, modifying the value in the `/etc/ansible/ansible.cfg` file
+* In the playbook itself, in the `vars:` section:
+```yaml
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+```
+
+
+In Unix systems, Ansible also checks the existence of the environment variable `ANSIBLE_CONFIG` to find the path of the `.cfg` used by default. If this variable does not exists, then it uses the file `/etc/ansible/ansible.cfg`.
 
 ***
 
