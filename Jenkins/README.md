@@ -96,9 +96,80 @@ jenkins ALL=(ALL) NOPASSWD: ALL
 ### Jenkins and ssh keys
 
 You might need Jenkins to connect to remote hosts, e.g., when running Ansible playbooks. In that case, you need to have the necessary ssh key pair.
-They must be located in ```/var/lib/jenkins/.ssh```.
+The keys must be located in ```/var/lib/jenkins/.ssh```.
 
 ## Create a pipeline
+
+Pipelines are a useful tool provided by Jenkins which allows to configure a series of tasks using code. 
+There are two ways to build a pipeline script:
+* Scripted pipeline using Groovy
+* Declarative pipeline using Jenkins DSL
+
+Let us discuss declarative pipelines since they are fairly simple. A declarative pipeline would have the structure
+```lang-java
+pipeline {
+    agent any
+    environment {
+        TFPROJECTFOLDER = 'terraform-demo'
+        TFPROJECTREPO = 'https://github.com/.../terraform-demo.git'
+    }
+    stages {
+        
+        stage('Clone templates') {
+            steps {
+                sh '''#!/bin/bash
+                mkdir -p ${TF_WORKSPACE_PATH}
+                cd ${TF_WORKSPACE_PATH}
+                exists=$(ls ${TFPROJECTFOLDER} 2>/dev/null)
+                if [ -z $exists ] 
+                then
+                  git clone ${TFPROJECTREPO}
+                else
+                  cd ${TF_WORKSPACE_PATH}/${TFPROJECTFOLDER}
+                  git checkout main
+                  git fetch --all
+                  git reset --hard origin/main
+                fi
+                '''
+            }
+        }   
+        
+        stage('Terraform init') {
+            steps {
+                sh '''#!/bin/bash
+                cd ${TF_WORKSPACE_PATH}/${TFPROJECTFOLDER};
+                terraform init;
+                '''
+            }
+        }
+        
+        stage('Terraform apply') {
+            steps {
+                sh '''#!/bin/bash
+                cd ${TF_WORKSPACE_PATH}/${TFPROJECTFOLDER};
+                terraform apply -auto-approve 
+                '''
+            }
+        }
+        
+        stage('Terraform refresh') {
+            steps {
+                sh '''#!/bin/bash
+                cd ${TF_WORKSPACE_PATH}/${TFPROJECTFOLDER};
+                terraform refresh
+                '''
+            }
+        }        
+    }
+}
+```
+As we see, there is a root block called `pipeline`, and inside there are two more structures:
+* environment: contains environment variables used inside the pipeline script
+* stages: contains the different stages or block of steps
+    * stage: it is a well defined block of tasks or `steps` with a specific purpose
+        * step: contains an shell script to be executed on the host managed by the jenkins agent
+Note that the structure of stages declared above will be translated in the following in Jenkins after running the pipeline. 
+![Pipeline stages](./pipeline-stages.png)
 
 In my experience automating the implementation of Terraform templates with Jenkins Pipelines, if Jenkins and Terraform are installed in the same host, I found useful giving instructions to the jobs/pipelines for creating a workspace folder to store the ```.tf``` project as follows
 ```sh
@@ -120,7 +191,7 @@ Note that any environment variable that the jenkins service user needs when runn
 to the **Behaviours** section.
 And setting it to the name of the branch (e.g, "main").
 In **Build configuration** edit **Script path** to match the path of the desired pipeline script inside the repository:
-![Set the path to the pipeline script in the configuration](./Captura.PNG)
+![Set the path to the pipeline script in the configuration](./Captura.png)
 This is useful if you want to have multiple declarative pipelines in the same github repository. The ```Jenkinsfile```'s will be stored in different folders.
 If you don't want Jenkins to build the job after scanning the repository, in **Property strategy** add the property
 * Suppress automatic SCM triggering
@@ -161,3 +232,6 @@ So, for example, to trigger the pipeline every saturday and sunday at 19.06 the 
     }
 ```
 
+***
+
+Return to **[main page](../README.md)** 
