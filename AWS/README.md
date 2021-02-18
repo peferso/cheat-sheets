@@ -152,7 +152,7 @@ Let us now schedule a safety stop of our instance every day at 19:00 so that we 
 4. On the right panel, in **Targets**, add the stopEC2Instance Lambda function.
 5. Finish giving a name and description to the rule.
 
-![Creation of a CloudWatch Event rule for periodically triggering a Lambda function](rule-scheduling-lambda-function-triggering.png.png)
+![Creation of a CloudWatch Event rule for periodically triggering a Lambda function](rule-scheduling-lambda-function-triggering.png)
 
 ***
 
