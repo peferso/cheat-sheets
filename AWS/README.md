@@ -69,12 +69,11 @@ Default output format [None]: json
 
 AWS Lambda is a service that allows to run code without a server. With wide applications, using Lambda one can trigger code scripts in any supported language (python, java, Node.js...) to perform many tasks such us, for example, performing an automatic resizing of images when uploaded to an AWS S3 bucket.
 
-### AWS Lambda function to schedule stop/start of EC2 instances
+### AWS Lambda function to stop/start of EC2 instances
 
-Let us follow this [tutorial](https://aws.amazon.com/es/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/) to configure a Lambda function which will stop and start EC2 instances.
+Let us follow this [tutorial](https://aws.amazon.com/es/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/) to manually configure a Lambda function which will stop and start EC2 instances.
 
-1. First we go to the IAM console and create a new policy instead of choosing an existing one for the AWS Lambda role, pasting the code
-
+1. First we go to the IAM console and create a new policy instead of choosing an existing one for the AWS Lambda role, pasting the following code in the JSON editor. Continue and finish the policy creation. Policies are needed by users and roles to perform specific actions on AWS ressources. In this case, any AWS Lambda role with this policy attached will be able to start/stop EC2 instances as well as perform some actions related with Amazon CloudWatch logs.
 ```json
 {
   "Version": "2012-10-17",
@@ -99,15 +98,14 @@ Let us follow this [tutorial](https://aws.amazon.com/es/premiumsupport/knowledge
   ]
 }
 ```
-in the JSON editor. Continue and finish the policy creation.
 
-2. Then we create the AWS Lambda role and we attach the policy created above.
+2. Next, we create the AWS Lambda role and we attach the policy created above.
 
-3. We go to the AWS Lambda console, and we create a new function from scratch:
+3. We access to the AWS Lambda console, and we create a new function from scratch:
    * We need to provide a name, e.g., startEC2Instance
-   * Choose a language to create the function
+   * Choose a programming language to create the function (python 3.8
    * Associate an existing role (the one created in step 2)
-   * Click on create function and paste this code in the editor (it is python 3.7 code)
+   * Click on create function and paste this code in the editor (it is python 3 code)
 
 ```python
 import boto3
@@ -120,7 +118,7 @@ def lambda_handler(event, context):
     print('started your instances: ' + str(instances))
 ```
 
-   * Under basic settings set the Timeout to 10 seconds.
+   * Under basic settings section, set the Timeout to 10 seconds.
 
 Repeat the same steps for creating another function to stop a specific EC2 instance, and paste the code
 ```python
@@ -137,8 +135,8 @@ def lambda_handler(event, context):
 > Remember to change the region and instance id to your specific case.
 
 Once the functions are created, it is possible to test them. 
-For this, create a test, give it a name and click Create, don't pay attention to the JSON text since it is not used to perform the text. 
-Click test and check if the instance is stopped/started.
+For this, create a test in each function. Give it a name and click on Create, don't pay attention to the JSON text box since it is not used to perform the test. 
+Click on **test** and check if the instance is stopped/started in the EC2 dashboard.
 
 > Before running the test, you must save the code changes and **click on deploy**
 
