@@ -142,6 +142,17 @@ Click on **test** and check if the instance is stopped/started in the EC2 dashbo
 
 ![Don't forget to click on deploy before testing the function](testing-lambda-function.png)
 
+### Schedule Lambda functions triggering using CloudWatch events
+
+Let us now schedule a safety stop of our instance every day at 19:00 so that we don't incur in extra charges accidentally.
+
+1. Navigate to the AWS CloudWatch Management Console
+2. Choose Rule in the Events section on the left panel
+3. On the source of event, choose **Schedule** (_Programación_ in Spanish), and provide the appropriate CRON pattern: `0 19 * * ? *`. Checkout the AWS user guide [Schedule Expressions for Rules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html).
+4. On the right panel, in **Targets**, add the stopEC2Instance Lambda function.
+5. Finish giving a name and description to the rule.
+
+
 ***
 
 Return to **[main page](../README.md)** 
