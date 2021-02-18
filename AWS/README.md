@@ -141,7 +141,7 @@ For this, create a test, give it a name and click Create, don't pay attention to
 Click test and check if the instance is stopped/started.
 
 > Before running the test, you must save the code changes and **click on deploy**
-![Don't forget to click on deploy before testing the function]()
+![Don't forget to click on deploy before testing the function](testing-lambda-function.png)
 
 ***
 
