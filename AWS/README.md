@@ -73,7 +73,7 @@ AWS Lambda is a service that allows to run code without a server. With wide appl
 
 Let us follow this [tutorial](https://aws.amazon.com/es/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/) to manually configure a Lambda function which will stop and start EC2 instances.
 
-1. First we go to the IAM console and create a new policy instead of choosing an existing one for the AWS Lambda role, pasting the following code in the JSON editor. Continue and finish the policy creation. Policies are needed by users and roles to perform specific actions on AWS ressources. In this case, any AWS Lambda role with this policy attached will be able to start/stop EC2 instances as well as perform some actions related with Amazon CloudWatch logs.
+1. First we go to the IAM console and create a new policy for the AWS Lambda role, pasting the following code in the JSON editor. Continue and finish the policy creation. Policies are needed by users and roles to perform specific actions on AWS ressources. In this case, any AWS Lambda role with this policy attached will be able to start/stop EC2 instances as well as to perform some actions related with Amazon CloudWatch logs.
 ```json
 {
   "Version": "2012-10-17",
