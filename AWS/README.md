@@ -65,6 +65,69 @@ Default region name [None]: us-west-2
 Default output format [None]: json
 ```
 
+## AWS Lambda service
+
+AWS Lambda is a service that allows to run code without a server. With wide applications, using Lambda one can trigger code scripts in any supported language (python, java, Node.js...) to perform many tasks such us, for example, performing an automatic resizing of images when uploaded to an AWS S3 bucket.
+
+### AWS Lambda function to schedule stop/start of EC2 instances
+
+Let us follow this [tutorial](https://aws.amazon.com/es/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/) to configure a Lambda function which will stop and start EC2 instances.
+
+1. First we go to the IAM console and create a new policy instead of choosing an existing one for the AWS Lambda role, pasting the code
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:Start*",
+        "ec2:Stop*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+in the JSON editor. Continue and finish the policy creation.
+2. Then we create the AWS Lambda role and we attach the policy created above.
+3. We go to the AWS Lambda console, and we create a new function from scratch:
+    * We need to provide a name, e.g., startEC2Instance
+    * Choose a language to create the function
+    * Associate an existing role (the one created in step 2)
+    * Click on create function and paste this code in the editor (it is python 3.7 code)
+```python
+import boto3
+region = 'eu-west-3'
+instances = ['i-0431586fa6606dcdf']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+    ec2.start_instances(InstanceIds=instances)
+    print('started your instances: ' + str(instances))
+```
+    * Under basic settings we set the Timeout to 10 seconds.
+
+Repeat the same steps for creating another function to stop a specific EC2 instance, and paste the code
+```python
+import boto3
+region = 'eu-west-3'
+instances = ['i-0431586fa6606dcdf']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+    ec2.stop_instances(InstanceIds=instances)
+    print('started your instances: ' + str(instances))
+```
 
 ***
 
