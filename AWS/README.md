@@ -104,10 +104,10 @@ in the JSON editor. Continue and finish the policy creation.
 2. Then we create the AWS Lambda role and we attach the policy created above.
 
 3. We go to the AWS Lambda console, and we create a new function from scratch:
-    * We need to provide a name, e.g., startEC2Instance
-    * Choose a language to create the function
-    * Associate an existing role (the one created in step 2)
-    * Click on create function and paste this code in the editor (it is python 3.7 code)
+   * We need to provide a name, e.g., startEC2Instance
+   * Choose a language to create the function
+   * Associate an existing role (the one created in step 2)
+   * Click on create function and paste this code in the editor (it is python 3.7 code)
 
 ```python
 import boto3
@@ -120,7 +120,7 @@ def lambda_handler(event, context):
     print('started your instances: ' + str(instances))
 ```
 
-   * Under basic settings we set the Timeout to 10 seconds.
+   * Under basic settings set the Timeout to 10 seconds.
 
 Repeat the same steps for creating another function to stop a specific EC2 instance, and paste the code
 ```python
@@ -133,6 +133,15 @@ def lambda_handler(event, context):
     ec2.stop_instances(InstanceIds=instances)
     print('started your instances: ' + str(instances))
 ```
+
+> Remember to change the region and instance id to your specific case.
+
+Once the functions are created, it is possible to test them. 
+For this, create a test, give it a name and click Create, don't pay attention to the JSON text since it is not used to perform the text. 
+Click test and check if the instance is stopped/started.
+
+> Before running the test, you must save the code changes and **click on deploy**
+![Don't forget to click on deploy before testing the function]()
 
 ***
 
