@@ -32,8 +32,8 @@ Now, one could modify the code of the `.tf` files.
 The next time that an `apply` or `plan` command is used, 
 Terraform will use the `terraform.tfstate` information to print out the changes to the cloud ressources with respect to the configuration contained in the updated local `.tf` files.
 
-4. To destroy all the ressources: `terraform destroy`.
-5. To retrieve the values of the output variables declared in `outputs.tf`: `terraform refresh`
+* To destroy all the ressources: `terraform destroy`.
+* To retrieve the values of the output variables declared in `outputs.tf`: `terraform refresh`
 
 ## Terraform syntax
 
