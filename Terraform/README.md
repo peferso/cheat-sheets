@@ -26,7 +26,7 @@ To transform this code into infrastructure, the process is the following. With a
 2. Check out what the configuration will do: `terraform plan`. This step prints out the changes to the existing configuration in the cloud.
 3. Implement the changes: `terraform apply`. This step prints again the changes and asks for confirmation to create the ressources. You can omit the confirmation step using `terraform apply -auto-approve`.
 
-The first time that a `terraform apply` is performed, Terraform generates on the project folder several files. 
+The first time that a `terraform apply` is performed, Terraform generates several files on the project folder. 
 One of these files is `terraform.tfstate`, which contains the information of all the ressources created, i.e., the actual picture of the cloud world.
 Now, one could modify the code of the `.tf` files.
 The next time that an `apply` or `plan` command is used, 
