@@ -37,6 +37,92 @@ Terraform will use the `terraform.tfstate` information to print out the changes 
 
 ## Terraform syntax
 
+As already mentioned, Terraform code consists mainly in calls to modules and variable declarations. Inputs and outputs of modules can be parametrized and used throughout the configuration. Let us consider the following basic code of a `main.tf` file:
+```hlc
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 2.70"
+    }
+  }
+}
+
+provider "aws" {
+  region  = "eu-west-3"
+  access_key = "AKFAQNOK7RH4RAFKTWWJ"
+  secret_key = "GGlxnpdnnQzGAlKm4LThSjQohZ8kP1IRimUdGzfd"
+}
+```
+It consists of two blocks, which are native Terraform modules necessary to specify the cloud provider, [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) in this case. We can also appreciate how input parameters are hardcoded. Note that an AWS region, public and private access keys are needed (see the [CLI section in AWS](../AWS/README.md) for information regarding these credentials). 
+
+### Terraform variables
+
+We can use variables to feed some of these values to the _provider_ module:
+```hlc
+provider "aws" {
+  region  = var.my_region
+  access_key = var.my_public_key
+  secret_key = var.my_secret_key
+}
+```
+given that, in the `variables.tf` file, the variables are declared as follows:
+```hcl
+variable "my_region" {
+  type        = string
+  description = "The AWS region where resources will be created"
+  default     = "eu-west-3"
+}
+
+variable "my_public_key" {
+  type        = string
+  default     = "AKFAQNOK7RH4RAFKTWWJ"
+}
+
+variable "my_secret_key" {
+  type        = string
+  default     = "GGlxnpdnnQzGAlKm4LThSjQohZ8kP1IRimUdGzfd"
+}
+```
+At this step, the variables take their values from the _default_ entry in each _variable_ block.
+It is not recommended to hard code credentials in the configuration. 
+We can take advantage of this issue to introduce now **environment variables**. 
+Terraform scans the existing system environment variables and takes those ones whose names satisfy the pattern `TF_VARS_*`. 
+Thus, we could create in our system two variables: `TF_VARS_my_public_key` and `TF_VARS_my_secret_key` with the necessary values (see [Environment variables in the bash cheatsheet](../bash/README.md)).
+In this way, we could have the following `variables.tf` file:
+```hcl
+variable "my_region" {
+  type        = string
+  description = "The AWS region where resources will be created"
+  default     = "eu-west-3"
+}
+
+variable "my_public_key" {
+  type        = string
+}
+
+variable "my_secret_key" {
+  type        = string
+}
+```
+Let us introduce the `terraform.tfvars` file. Until now, we have two ways to feed variable values: _via_ their default value in the declaration `variables.tf` file or _via_ environment variables for those critical or secret ones. A variable without _default_ value is interpreted as mandatory, and must be fed somehow or there will be an error. Adding a `terraform.tfvars` file to the configuration, we can centralise values declarations in one file:
+```hcl
+my_region = "eu-west-3"
+my_subnet_id = "subnet-0e58bf84280768750"
+my_security_group_SSH_laptop = "sg-0a115751499efa539"
+```
+Finnally, we can feed variable values in the command line:
+```sh
+terraform apply -var="image_id=ami-abc123"
+```
+The values in the `terraform.tfvars` or given in other ways will override the default ones. In the case of giving values to the same variable using some of these methods, Terraform loads the values in the following order, overriding the old ones:
+1. Environment variables
+2. `terraform.tfvars` file if present
+3. `terraform.tfvars.json` file if present
+4. Any `*.auto.tfvars` or `*.auto.tfvars.json` files, processed in lexical order of their filenames.
+5. Any `-var` and `-var-file` options on the command line, in the order they are provided.
+
+For more info on this topic, check out the [official documentation](https://www.terraform.io/docs/language/values/variables.html). 
 
 
 ***
