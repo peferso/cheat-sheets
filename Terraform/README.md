@@ -179,6 +179,7 @@ module "another_module" "name" {
   ...
 }
 ```
+> Note that in order to use module outputs they don't need to be declared in the `outputs.tf` file.
 
 ***
 
