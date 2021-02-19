@@ -56,7 +56,7 @@ provider "aws" {
 ```
 It consists of two blocks, which are native Terraform modules necessary to specify the cloud provider, [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) in this case. We can also appreciate how input parameters are hardcoded. Note that an AWS region, public and private access keys are needed (see the [CLI section in AWS](../AWS/README.md) for information regarding these credentials). 
 
-### Terraform variables
+### Variables
 
 We can use variables to feed some of these values to the _provider_ module:
 ```hlc
@@ -124,6 +124,60 @@ The values in the `terraform.tfvars` file, or given in any other way, will overr
 
 For more info on this topic, check out the [official documentation](https://www.terraform.io/docs/language/values/variables.html). 
 
+### Outputs
+
+Outputs are similar to variables, they must be declared in the configuration in order to be printed after running `terraform apply` or `terraform refresh`. 
+Let us continue with our project structure, and lets place them in a file called `outputs.tf`. Suppose that in the `main.tf` file we have included this piece of code:
+```hlc
+...
+
+resource "aws_instance" "database_ec2" {
+  ami                         =  var.amiType
+  instance_type               =  var.insType
+  subnet_id                   =  var.ec2SubNt
+  vpc_security_group_ids      = [var.secGrpID]
+  associate_public_ip_address =  var.publicIP
+  user_data                   =  file(var.pathToUD)
+  key_name                    =  var.keyName
+}
+
+```
+With this piece of code we are incorporating a module: the native ressource [`aws_instance`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#argument-reference), which could be thought as a primary or elementary module. 
+In general, a module can be described as a structure that itself one or more ressources and/or modules. 
+This code creates an EC2 instance, the ressource is called "aws_instance" and we give it the name "database_ec2". 
+We could invoke this module more times but writing it with a different name. 
+
+In this example we can see that we are providing 7 input values using variables. 
+But in Terraform, modules usually have both input and output variables.
+In the documentation of the native [`aws_instance`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#argument-reference) module we can see the possible [outputs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#attributes-reference) (in the case of ressources they are called "attributes", but lets call them outputs). 
+Lets think that we are interested in printing out the value of the private IP of the instance once it is created, well, there is an output value for this: `private_ip`. 
+In order to visualize its value on the terminal after running the `init` or `refresh` commands, we could add the output `private_ip` to the `outputs.tf` file:
+```hlc
+output "database_ec2_private_ip" {
+  description = "Private IP of the database EC2 instance"
+  value       = aws_instance.database_ec2.private_ip
+}
+```
+The value would be printed together with the rest of the outputs declared as follows:
+```sh
+
+Apply complete! Resources: 13 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+database_ec2_id = "i-00df1d82b4c10345a"
+database_ec2_private_ip = "10.10.1.202"
+database_ec2_state = "running"
+```
+
+Besides printing out information, outputs can be used in other modules/ressources. A case of use may be providing the `id` of the instance as input to another module in `main.tf`:
+```hlc
+module "another_module" "name" {
+  ...
+  input_par_1 = aws_instance.database_ec2.private_ip
+  ...
+}
+```
 
 ***
 
