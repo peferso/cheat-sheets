@@ -115,7 +115,7 @@ Finnally, we can feed variable values in the command line:
 ```sh
 terraform apply -var="image_id=ami-abc123"
 ```
-The values in the `terraform.tfvars` file, or given in any other way, will override the default ones. In the case of giving values to the same variable using some of these methods, Terraform loads the values in the following order, overriding the old ones:
+The values in the `terraform.tfvars` file, or given in any other way, will override the default ones. In the case of giving values to the same variable using simultaneously some of these methods, Terraform loads the values in the following order overriding the old ones:
 1. Environment variables
 2. `terraform.tfvars` file if present
 3. `terraform.tfvars.json` file if present
