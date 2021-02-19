@@ -144,6 +144,7 @@ resource "aws_instance" "database_ec2" {
 ```
 With this piece of code we are incorporating a module: the native ressource [`aws_instance`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#argument-reference), which could be thought as a primary or elementary module. 
 >In general, a module can be described as a structure that itself contains one or more ressources and/or modules. 
+
 This code creates an EC2 instance, the ressource is called "aws_instance" and we give it the name "database_ec2". 
 We could invoke this module more times but writing it with a different name. 
 
