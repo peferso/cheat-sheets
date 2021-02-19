@@ -9,7 +9,7 @@ which is based on [HLC](https://github.com/hashicorp/hcl/blob/main/hclsyntax/spe
 Those files should be all inside the project folder and subfolders.
 What Terraform does is to aggregate all the code and discover the ressources dependencies.
 
-Terraform is executed from the command line. Let us consider the following project structure assuming some extended ("best practices")[https://www.terraform-best-practices.com/code-structure]
+Terraform is executed from the command line. Let us consider the following project structure assuming some extended ["best practices"](https://www.terraform-best-practices.com/code-structure)
 ```sh
 ___ project-folder
     |___ main.tf
