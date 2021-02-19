@@ -175,7 +175,7 @@ Besides printing out information, outputs can be used in other modules/ressource
 ```hlc
 module "another_module" "name" {
   ...
-  input_par_1 = aws_instance.database_ec2.private_ip
+  input_par_1 = aws_instance.database_ec2.id
   ...
 }
 ```
