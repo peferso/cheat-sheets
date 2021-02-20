@@ -3,6 +3,8 @@
 
 | Action                | command                           | Details |
 | :---                | :---:                                | ---:|
+| Indentation | == | Autoindents current line |
+| Indentation | =G | Autoindents whole file if cursor is in line 1 |
 | Insert text | i | Insert text in the current position |
 | Insert text | shift+A | Insert text at the end of the current line |
 | Insert text | I | Insert text at the beginning of current line |
