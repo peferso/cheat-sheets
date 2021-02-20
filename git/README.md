@@ -54,3 +54,17 @@ Delete a branch if not needed
 git branch -d newbranch
 ```
 
+## Git add
+
+Add changes to specific files:
+```sh
+git add pathToFile
+```
+Add changes to current folder and subfolders
+```sh
+git add .
+```
+Add changes to all repository
+```sh
+git add -A
+```
