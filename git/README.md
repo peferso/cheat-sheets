@@ -68,3 +68,15 @@ Add changes to all repository
 ```sh
 git add -A
 ```
+
+## Git rm
+
+Remove files added with `git add`:
+```sh
+git rm --cache pathtofile
+```
+or remove a complete folder
+```sh
+git rm -rf --cache pathtofolder
+```
+
