@@ -80,3 +80,14 @@ or remove a complete folder
 git rm -rf --cache pathtofolder
 ```
 
+## .gitignore
+
+Ignore certain files systematically when adding changes creating a `.gitignore` file and adding the files
+```sh
+file1
+file2
+*.log
+folder1
+folder2/*
+!folder2/subfolder_or_file_included
+```
