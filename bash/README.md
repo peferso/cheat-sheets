@@ -301,6 +301,22 @@ echo "${message//[0-9]/X}"
 # prints 'The secret key is XXXXX'
 ```
 
+Remove white spaces
+```sh
+var=$(echo "${var}//[:blank:]]/")
+```
+
+Remove all control characters:
+```sh
+var=${var//[ $'\001'-$'\037']}
+```` 
+
+Transform string to integer *after removing control characters*
+```sh
+expr $string
+num1=$((string + 0))
+num2=$((stra + strb))
+```
 
 ### File manipulation
 
