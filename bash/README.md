@@ -33,11 +33,11 @@ grep -option pattern file
 
 Option can be ```i``` if you want to ignore uppercase characters.
 
-Option can be `-A N` if you want to retrieve the `N` lines **after** each match
+Option can be `A N` if you want to retrieve the `N` lines **after** each match
 
-Option can be `-B N` if you want to retrieve the `N` lines **before** each match
+Option can be `B N` if you want to retrieve the `N` lines **before** each match
 
-Option can be `-C N` if you want to retrieve the `N` lines **around** each match
+Option can be `C N` if you want to retrieve the `N` lines **around** each match
 
 File can be ```*``` for all files in the working directory.
 
