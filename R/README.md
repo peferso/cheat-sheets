@@ -22,6 +22,9 @@ Get help about a resource _foo_:
 
 ## ggplot2 fundamentals
 
+Check out this [awesome ggplot2 pdf cheatsheet](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf).
+
+
 Scatter plot of _var1_ vs _var2_ data from dataframe _df_:
 ```R
 ggplot(data = df) + 
@@ -71,3 +74,34 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point(mapping = aes(color = class)) + 
   geom_smooth()
 ```
+
+## Console
+
+If you want to assign and print the assignment in a single line use `()` around the assignment:
+```R
+(y <- seq(1, 10))
+```
+
+## dplyr basics
+
+Data can be transformed using the basic dplyr functions, whose syntax is:
+```R
+new_dataframe <- verb(old_dataframe, what to do options)
+```
+
+Filter:
+```R
+jan1 <- filter(flights, month == 1, day == 1)
+```
+comparison operators are **>**, **>=**, **<**, **<=**, **!=** (not equal), and **==** (equal). Conditions can be combined using  **&** “and”, **|** “or”, and **!** “not”.
+When comparing real numbers it might be suitable using `near(a, b)` instead of `a == b` to avoid floating precision errors. 
+There is the option **x %in% y** that will filter rows where _x_ is found in _y_
+```R
+nov_dec <- filter(flights, month %in% c(11, 12))
+```
+Ordering rows is achieved with `arrange`. Values with NA are shown at the end, they can be printed first as follows:
+```R
+arrange(data_frame, desc(is.na(column_name)))
+```
+
+
