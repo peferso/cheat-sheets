@@ -20,6 +20,8 @@ Get help about a resource _foo_:
 ?foo
 ```
 
+Press ALT+SHIFT+K to access the shortcuts.
+
 ## ggplot2 fundamentals
 
 Check out this [awesome ggplot2 pdf cheatsheet](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf).
@@ -103,5 +105,50 @@ Ordering rows is achieved with `arrange`. Values with NA are shown at the end, t
 ```R
 arrange(data_frame, desc(is.na(column_name)))
 ```
-
-
+Selecting columns by variable name and dropping the rest
+```R
+select(flights, year, month, day)
+select(flights, year:day)
+select(flights, -(year:day))
+```
+variables can be identified with auxiliary functions as _starts_with_, _end_with_, see ?select.
+Change the order of some variables: 
+```R
+select(flights, time_hour, air_time, everything())
+```
+Create new variables from existing ones with `mutate`:
+```R
+# Create a new dataframe from existing one
+flights_sml <- select(flights, 
+  year:day, 
+  ends_with("delay"), 
+  distance, 
+  air_time
+)
+# Append the new columns
+mutate(flights_sml,
+  gain = dep_delay - arr_delay,
+  speed = distance / air_time * 60,
+  hours = air_time / 60,
+  gain_per_hour = gain / hours
+)
+```
+Or, if you want to replace all variables by the new ones:
+```R
+transmute(flights,
+  gain = dep_delay - arr_delay,
+  hours = air_time / 60,
+  gain_per_hour = gain / hours
+)
+```
+Using `summary` together with `group_by` to obtain statistics group by group:
+```R
+by_day <- group_by(flights, year, month, day)
+summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
+```
+The same code can be written with pipes: `%>%`. Pipes such as `x %>% f(y) %>% g(z)` perform `g(f(x, y),x)`.
+```R
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarise(mean = mean(dep_delay, na.rm = TRUE))
+```
