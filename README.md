@@ -1,11 +1,17 @@
-# cheat-sheets
-Several cheat-sheets of different topics in .md format
+# Introduction
+Several cheat-sheets of different topics in .md format.
+
+I found this framework very useful to quickly gather simple and useful notes and resources about commands, proceedures, configurations... related to several softwares that I have faced in my daily work. The purpose of this documentation is twofold:
+* Save some time redoing google search queries to find out the answer to some difficulties
+* Perhaps serve as a pleasant introduction or first step to some of the topics, since for many of them this notes have been created during my first learning iterations and crashes. 
 
 If you are watching this content in Github: 
 * There is one folder per topic.
 * Navigate into each of the different folders of this project to access the README.md files containing the cheat sheets.
 
-This content is also on Github pages, so It is possible to navigate this content [here](https://peferso.github.io/cheat-sheets/)
+This content is also on Github pages (presented with a fancy default theme), I invite you to navigate this content [here](https://peferso.github.io/cheat-sheets/)
+
+# Links to cheatsheets
 
 ## Ansible
 [Ansible](./Ansible/README.md)
