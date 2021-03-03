@@ -1,6 +1,9 @@
-# R cheatsheet
+# Introduction
 
-## Basics
+This notes contain several commands useful to use RStudio.
+I find mandatory to follow this [online book](https://r4ds.had.co.nz/index.html) by Hadley Wickham and Garret Grolemund. 
+
+# Basics
 
 Transform data into code to make it reproducible to others
 ```R
@@ -152,3 +155,7 @@ flights %>%
   group_by(year, month, day) %>% 
   summarise(mean = mean(dep_delay, na.rm = TRUE))
 ```
+
+***
+
+Return to **[main page](../README.md)**
