@@ -54,7 +54,7 @@ Now, lets discuss the four types of `JOIN` commands:
 * `INNER JOIN`: prints out only rows which have matching **ID** values.
 * `LEFT JOIN`: prints out every row of table A filling missing values of table B with nulls (rows of A with ID_A values missing in ID_B will have nulls in B columns)
 * `RIGHT JOIN`: prints out every row of table B filling missing values of table A with nulls (rows of B with ID_B values missing in ID_A will have nulls in A columns)
-* `FULL JOIN`: also called `FULL OUTER JOIN`, prints out every row of A and B filling with nulls the columns with unmatched ID values.
+* `FULL JOIN`: also called `FULL OUTER JOIN`, prints out every row of A and B filling with nulls the columns with unmatched ID values. This is not supported by MySQL.
 
 ***
 
