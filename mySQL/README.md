@@ -58,4 +58,4 @@ Now, lets discuss the four types of `JOIN` commands:
 
 ***
 
-Return to ![main page](../README.md)
+Return to **[main page](../README.md)**
