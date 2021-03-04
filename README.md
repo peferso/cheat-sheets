@@ -13,6 +13,11 @@ This content is also on Github pages (presented with a fancy default theme), I i
 
 # Links to cheatsheets
 
+---
+| [Ansible](./Ansible/README.md)  | [AWS](./AWS/README.md) | [Bash](./bash/README.md) |
+| :---:                  | :---:                                | ---:| 
+---
+
 ## Ansible
 [Ansible](./Ansible/README.md)
 
