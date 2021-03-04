@@ -12,7 +12,7 @@ If you are watching this content in Github:
 This content is also on Github pages (presented with a fancy default theme), I invite you to navigate this content [here](https://peferso.github.io/cheat-sheets/)
 
 # Links to cheatsheets
-
+|                                 |                              |                          |                                    |                                |
 | :---:                           | :---:                        | :---:                    | :---:                              | :---:                          |
 | [Ansible](./Ansible/README.md)  | [AWS](./AWS/README.md)       | [Bash](./bash/README.md) | [git](./git/README.md)             | [Jenkins](./Jenkins/README.md) |
 | [mySQL](./mySQL/README.md)      | [python](./python/README.md) | [R](./R/README.md)       | [Terraform](./Terraform/README.md) | [vim](./vim/README.md)         |
