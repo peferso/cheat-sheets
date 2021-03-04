@@ -20,10 +20,11 @@ The main steps are:
 If we want to allow remote database users to connect to our mySQL server we must perform several configurations in the server host:
 * Find out the port used by the mysqld service (default is 3306)
 * Enable inbound tcp traffic through mysqld service port from client servers with a security group rule
-* Enable remote hosts connections to mySQL server modifying the configuration file (`/etc/my.cnf`) setting
+* Enable remote hosts connections to mySQL server modifying the configuration file (`/etc/my.cnf`), setting the **bind-address** parameter to:
 ```sh
 bind-address = 0.0.0.0
 ```
+This will allow connections from any remote ip address.
 * Restart mysqld service
 
 Once this is done, a remote user must exists in order to connect from the client host. We must create this remote user as root: 
