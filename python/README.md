@@ -37,3 +37,6 @@ The syntax of the range function is `range(a,b,step)`, it generates a list of in
 * `b+a`: is the last integer, if consistent with the `step` value.
 * `step`: is the value of the increment used to generate the list of numbers, the difference between consecutive elements. 
 
+***
+
+Return to **[main page](../README.md)** 
