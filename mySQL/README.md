@@ -34,6 +34,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'DBUSER'@'%';
 FLUSH PRIVILEGES;
 ALTER USER 'DBUSER'@'%' IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
 ```
+Replace `DBUSER` and `PASSWORD` by a valid user name and password. 
 To automate this task, this queries can be sent using the command line as follows:
 ```sh
 mysql -e "CREATE USER 'DBUSER'@'%' IDENTIFIED BY 'PASSWORD';" -uroot -pROOTPASSWORD
