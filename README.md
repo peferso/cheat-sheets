@@ -15,7 +15,8 @@ This content is also on Github pages (presented with a fancy default theme), I i
 
 ---
 | [Ansible](./Ansible/README.md)  | [AWS](./AWS/README.md) | [Bash](./bash/README.md) |
-| :---:                  | :---:                                | ---:| 
+| :---:                  | :---:                           | :---:                    | 
+|                        |                                 |                          |
 ---
 
 ## Ansible
