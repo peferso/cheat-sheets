@@ -31,6 +31,9 @@ This content is also on Github pages (presented with a fancy default theme), I i
 ## mySQL
 [mySQL](./mySQL/README.md)
 
+## python
+[python](./mySQL/python.md)
+
 ## R
 [R](./R/README.md)
 
