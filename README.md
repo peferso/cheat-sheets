@@ -1,5 +1,9 @@
 # Introduction
-Several cheat-sheets of different topics in .md format.
+
+Did you ever have to struggle to painfully remember how to use the find command in ubuntu or some other linux command line hack?
+Do you know by memory the git command to override an outdated local repository with the github updated version?
+
+Certainly I don't... An in order to save myself some time doing google searches I have collected here several cheat-sheets of different topics in .md format.
 
 I find the GitHub Pages service combined with markdown syntax very useful to quickly gather simple, handy notes, as well as resources about commands, proceedures, configurations... related to several software/frameworks that I have faced in my daily work. The purpose of this documentation is twofold:
 * Save some time to myself redoing google search queries to find out the answer to some difficulties
