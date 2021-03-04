@@ -1,5 +1,49 @@
 # Basic introduction
 
+## Installation of mySQL server on Linux OS
+
+There are several necessary steps to configure a mySQL database in Linux. 
+Although I have done it in an Amazon Linux EC2 instance, they should be similar in a different Linux OS.
+
+These steps can be found in [this Ansible playbook](https://github.com/peferso/terraform-demo/blob/main/Utilities/ansible-playbooks/db-server-setup.yml) that I wrote to automatically configure a mySQL database server in an Amazon Linux EC2 instance.
+
+The main steps are:
+* Get the repository of mySQL server
+* Install it
+* Enable the automatic activation of the mysqld server at boot
+* Manually start the mysqld service
+* Retrieve initial temporary root password
+* Set a new root password
+
+## Allowing remote users to connect to the database server using mySQL client
+
+If we want to allow remote database users to connect to our mySQL server we must perform several configurations in the server host:
+* Find out the port used by the mysqld service (default is 3306)
+* Enable inbound tcp traffic through mysqld service port from client servers with a security group rule
+* Enable remote hosts connections to mySQL server modifying the configuration file (`/etc/my.cnf`) setting
+```sh
+bind-address = 0.0.0.0
+```
+* Restart mysqld service
+
+Once this is done, a remote user must exists in order to connect from the client host. We must create this remote user as root: 
+```sql
+CREATE USER 'DBUSER'@'%' IDENTIFIED BY 'PASSWORD';
+GRANT ALL PRIVILEGES ON * . * TO 'DBUSER'@'%';
+FLUSH PRIVILEGES;
+ALTER USER 'DBUSER'@'%' IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
+```
+To automate this task, this queries can be sent using the command line as follows:
+```sh
+mysql -e "CREATE USER 'DBUSER'@'%' IDENTIFIED BY 'PASSWORD';" -uroot -pROOTPASSWORD
+...
+```
+
+After ssh to the client server, we can access the remote mySQL database as follows:
+```sh
+mysql -u'DBUSER' -h'IP_OF_SERVER_DATABASE' -p'PASSWORD'
+```
+
 ## Users management
 Show users:
 ```sql
