@@ -8,6 +8,7 @@
 | Insert text | i | Insert text in the current position |
 | Insert text | shift+A | Insert text at the end of the current line |
 | Insert text | I | Insert text at the beginning of current line |
+| Line numbers | :set number | Shows line numbers |
 | Move cursor | w | Moves the cursor forward jumping words |
 | Move cursor | b | Moves the cursor backwards jumping words |
 | Move cursor | ^ | Moves the cursor to the beginning of current line |
