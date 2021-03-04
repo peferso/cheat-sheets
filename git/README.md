@@ -1,6 +1,6 @@
 # Git cheat sheet
 
-## Passwords and authentication
+# Passwords and authentication
 
 Tell git to remember the password in future pushes during 3600 seconds:
 ```sh
@@ -15,27 +15,29 @@ git config --global user.email p.fdez.s.90@gmail.com
 git commit --amend --reset-author
 ```
 
-## Branches
+# Branches
 
 Check in which branch you are working now:
 ```sh
 git status
 ```
 
-Create a new branch called "develop"
+## Create a new branch called "develop"
 ```sh
 git branch develop
 ```
 
-Switch to the branch "develop"
+## Switch to the branch "develop"
 ```sh
 git checkout develop
 ```
 
-Create a new branch and switch to it 
+## Create a new branch and switch to it 
 ```sh
 git checkout -b newbranch
 ```
+
+## Save workflow
 
 Once you are in the desired branch, change the code and commit the changes 
 ```sh
@@ -90,4 +92,12 @@ file2
 folder1
 folder2/*
 !folder2/subfolder_or_file_included
+```
+
+## git fetch
+
+Override existing local repository with GitHub version:
+```sh
+git fetch origin master
+git reset --hard origin/master
 ```
