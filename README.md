@@ -1,7 +1,7 @@
 # Introduction
 Several cheat-sheets of different topics in .md format.
 
-I found this framework very useful to quickly gather simple and handy notes and resources about commands, proceedures, configurations... related to several software/frameworks that I have faced in my daily work. The purpose of this documentation is twofold:
+I find the GitHub Pages service combined with markdown syntax very useful to quickly gather simple, handy notes, as well as resources about commands, proceedures, configurations... related to several software/frameworks that I have faced in my daily work. The purpose of this documentation is twofold:
 * Save some time to myself redoing google search queries to find out the answer to some difficulties
 * Perhaps serve you as a pleasant introduction or first step to some of the topics, since for many of them I have created this notes during my first learning iterations and crashes. 
 
