@@ -3,6 +3,9 @@
 
 | Action                | command                           | Details |
 | :---                | :---:                                | ---:|
+| Delete and insert | cc | Deletes current line and changes to insert mode |
+| Delete and insert | C  | Deletes from current position to end of line and changes to insert mode |
+| Delete and insert | cw | Deletes current word and changes to insert mode |
 | Indentation | == | Autoindents current line |
 | Indentation | =G | Autoindents whole file if cursor is in line 1 |
 | Insert text | i | Insert text in the current position |
