@@ -197,6 +197,17 @@ do
  ...
 done
 ```
+also, to loop over integer values:
+```sh 
+for i in {1..32}
+do
+ ...
+done
+```
+or in one line
+```sh
+for i in {1..90}; do; echo "" > file-$i.txt ; done
+```
 
 Append an element to existing array
 ```sh
