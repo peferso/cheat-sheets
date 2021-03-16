@@ -129,6 +129,17 @@ Change to a user of a service account (without shell by design), such as jenkins
 sudo su -s /bin/bash jenkins
 ```
 
+### Adding a directory to the PATH variable
+
+```sh
+export PATH=new_path:$PATH
+```
+
+To see which directory is used for a program 
+```sh
+which python
+```
+
 
 ## Bash programming
 
