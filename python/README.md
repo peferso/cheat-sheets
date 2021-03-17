@@ -55,6 +55,63 @@ The syntax of the range function is `range(a,b,step)`, it generates a list of in
 * `b+a`: is the last integer, if consistent with the `step` value.
 * `step`: is the value of the increment used to generate the list of numbers, the difference between consecutive elements. 
 
+
+# Pandas
+
+Import Pandas:
+```python
+import pandas as pd
+```
+
+
+## Count number of rows and columns
+
+The number of rows in a dataframe `df` is given by:
+```python
+numRows = df.shape[0]
+print(numRows)
+```
+
+The number of columns:
+```python
+numCols = df.shape[1]
+print(numCols)
+```
+
+## Managing excel files
+
+Import an excel file as a pandas dataframe:
+```python
+import pandas as pd
+path = './path_to_file'
+df = pd.read_excel(path)
+```
+
+Export an existing dataframe `df` to an excel file:
+```python
+export_excel = df.to_excel(path_to_exported_file, index=None, header=True)
+```
+
+## Loop over dataframe rows
+
+Given an existing dataframe `df`, we can loop over the rows and access specific columns as follows:
+```python
+for index, row in df.iterrows():
+    CUSTOMER_NAME = str(row['CUSTOMER NAME'])
+    DATE_OF_BIRTH = str(row['DATE OF BIRTH'])
+    ...
+```
+
+## Filter dataframe rows by a condition
+
+Given an existing dataframe `df` and a condition, the following code filters the rows for which the condition is true:
+```python
+is_it_satisfied = df["Recommendation based on Requirement"] == "yes"
+df_requiredRows = df[is_it_satisfied]
+```
+
+
+
 ***
 
 Return to **[main page](../README.md)** 
