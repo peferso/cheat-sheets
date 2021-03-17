@@ -2,6 +2,21 @@
 
 Packages are easily managed using conda or the anaconda framework.
 
+Print python version
+```python
+import sys
+print('Python version', sys.version)
+```
+
+Print packages version:
+```python
+import requests
+import json
+print('requests:', requests.__version__)
+print('json:', json.__version__)
+```
+> Not all the packages have a `__version__` value.
+
 # Anaconda
 
 Anaconda is a software that provides a python package and environment manager, together with other tools such as Jupyter Notebooks, JupyteLab... 
