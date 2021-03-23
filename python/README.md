@@ -117,6 +117,15 @@ for index, row in df.iterrows():
     ...
 ```
 
+## Loop over dataframe rows and columns
+
+Given an existing dataframe 
+```python
+for column in df.columns:
+	for index, row in df.iterrows():
+		df.loc[index, column] = row[column].replace("foo", "bar")
+```
+
 ## Filter dataframe rows by a condition
 
 Given an existing dataframe `df` and a condition, the following code filters the rows for which the condition is true:
