@@ -25,4 +25,17 @@
 | Repeat  | . | Repeats the last action |
 | Run shell command   | :! command | Allows you to run a shell command without closing vim first, e.g., :! ls -lrt |
 
+# Default settings
 
+Default vim settings are stored in a file called `.vimrc` which usually is contained in the home directory.
+
+A possible set of useful settings inside the `.vimrc` file could be:
+```
+set hlsearch # highlight search results
+set incsearch # incremental highlight search results
+set ignorecase # ignore case when searching
+set relativenumber # show relative line numbers
+set number # to show current line number
+inoremap jj <Esc> # to exit insert mode typing "jj" instead of Esc key
+```
+these settings can be activated temporarily inside the document just writing the commands with a semicolon first, e.g., `:set relativenumber`, `:set norelativenumber`, `:set number`, `:set nonumber`...
