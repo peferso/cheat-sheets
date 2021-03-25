@@ -1,8 +1,8 @@
 # Bash utilities
 
-## System management
+# System management
 
-### Processes
+## Processes
 
 Print out the running processes:
 
@@ -10,7 +10,18 @@ Print out the running processes:
 ps -ef 
 ```
 
-### Connectivity
+Also, we can use the top command
+```sh
+top
+```
+With top running, we can type `h` to open the help menu.
+We can track processes triggered by a specific user calling top as follows:
+```sh
+top -u username
+```
+For example, typing `V` we can toggle the view to view a forest tree process hierarchy.
+
+## Connectivity
 
 Get the ip address:
 
@@ -23,7 +34,7 @@ exec 3<> /dev/tcp/180.18.153.59/7222
 ```
 if there is not a *[Connection timed out]*, then it is accessible. Output can be checked with ```echo $?```.
 
-### File management
+## File management
 
 Find all lines that contain a pattern 
 
@@ -55,7 +66,7 @@ find -type f -name exact-name.ext
 
 
 
-### ssh
+## ssh
 
 Ssh using an existing private key .pem file
 ```sh
@@ -79,7 +90,7 @@ sudo chmod 600 $privateKeyFile
 sudo chmod 600 $publicKeyFile
 ```
 
-### Environment variables
+## Environment variables
 
 Create a new one using the terminal
 ```sh
@@ -97,7 +108,7 @@ echo 'NEWVAR="content/asdf"' >> /etc/environment
 echo 'PUBLIC_IP='$PUBLIC_IP >> /etc/environment
 ```
 
-### Groups and users
+## Groups and users
 
 Create a group
 ```sh
@@ -129,7 +140,7 @@ Change to a user of a service account (without shell by design), such as jenkins
 sudo su -s /bin/bash jenkins
 ```
 
-### Adding a directory to the PATH variable
+## Adding a directory to the PATH variable
 
 ```sh
 export PATH=new_path:$PATH
@@ -141,9 +152,9 @@ which python
 ```
 
 
-## Bash programming
+# Bash programming
 
-### Redirect stderr and stdout to trash
+## Redirect stderr and stdout to trash
 
 Only stderr
 ```sh
@@ -160,7 +171,7 @@ Both stderr and stdout
 2> /dev/null 1>&2
 ```
 
-### If statement
+## If statement
 
 Check if input is empty
 ```sh
@@ -183,7 +194,7 @@ fi
 
 
 
-### Arrays
+## Arrays
 
 Declare arrays
 ```sh
@@ -236,7 +247,7 @@ echo "${#array[@]}"
 ```
 
 An 
-### Functions
+## Functions
 
 Example of declaring a function called "fun"
 ```sh
@@ -249,7 +260,7 @@ so that, we invoke it as follows:
 fun "Peter" "bash programming"
 ```
 
-### Split a string using a delimiter
+## Split a string using a delimiter
 
 Function that splits a string and stores elements splitted in an array
 ```sh
@@ -277,7 +288,7 @@ partLeft=${string%%"$delimiter"*}
 partRight=${string#*"$delimiter"}
 ```
 
-### Store stdout in a variable
+## Store stdout in a variable
 
 Examples
 ```sh
@@ -285,7 +296,7 @@ var1=$(echo ls -lrt)
 var2=$(cat file.log)
 ```
 
-### String manipulation
+## String manipulation
 
 Check if a string contains only alphanumeric and {"```-```", "```_```"} characters.
 ```sh
@@ -348,14 +359,14 @@ num1=$((string + 0))
 num2=$((stra + strb))
 ```
 
-### File manipulation
+## File manipulation
 
 Replace all "word" occurencies by "new" in all file "FILE"
 ```sh
 sed -i -e "s/word/new/g" FILE
 ```
 
-### Date-Time stamp
+## Date-Time stamp
 
 Store current date-time stamp in a variable
 ```sh
