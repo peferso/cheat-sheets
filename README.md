@@ -31,7 +31,8 @@ This content is also on Github pages (presented with a fancy default theme), I i
 [AWS](./AWS/README.md)
 
 ## Bash
-[Bash](./bash/README.md)
+[Bash - Part 1](./bash-1/README.md)
+[Bash - Part 2](./bash-2/README.md)
 
 ## git
 [git](./git/README.md)
