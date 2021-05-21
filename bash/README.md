@@ -19,6 +19,11 @@ top -u username
 ```
 For example, typing `V` we can toggle the view to view a forest tree process hierarchy.
 
+Sort percentage of CPU's usage by user and process
+```sh
+ps -eo pcpu,pid,user,args | sort -r -k1 | less
+```
+
 ## Connectivity
 
 Get the ip address:
