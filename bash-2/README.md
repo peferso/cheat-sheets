@@ -205,6 +205,18 @@ num1=$((string + 0))
 num2=$((stra + strb))
 ```
 
+Modify using patterns
+```sh
+string=str1_str2_str3.str4.str5
+echo ${string##*_} # removes largest occurence of pattern at the begginning of string
+echo ${string#*_} # removes smallest occurence of pattern at the begginning of string
+echo ${string}
+echo ${string%.*} # removes smallest occurence of pattern at the end of string
+echo ${string%%.*} # removes largest occurence of pattern at the end of string
+echo ${string/.*/repl01} # replaces first occurrence of pattern in string
+echo ${string//.*/repl01} # replaces all occurrences of pattern in string
+```
+
 ## File manipulation
 
 Replace all "word" occurencies by "new" in all file "FILE"
@@ -217,6 +229,33 @@ sed -i -e "s/word/new/g" FILE
 Store current date-time stamp in a variable
 ```sh
 dtimestamp=$( echo "$(date +'%Y%m%d-%H_%M_%S_%3N')" )
+```
+
+## Miscellaneous
+
+Verify number of occurrences in a set of files:
+```sh
+files=(
+   "./*.csv"
+)
+
+for file in ${files}
+do
+   I103=$(cat ${file} | grep -c '{2:I103')
+   O103=$(cat ${file} | grep -c '{2:O103')
+   nI103=$((I103+0))
+   nO103=$((O103+0))
+   ntotalMT103=$((nI103+nO103))
+   total=$(cat ${file} | grep -c '\$')
+   ntotal=$((total+0))
+   if [ ${ntotal} -eq ${ntotalMT103} ] 
+   then
+      echo    
+      echo ${file}
+      echo '  'number of 103 occurrences in file: ${ntotalMT103}
+      echo '  'total number of symbol occurrences in file: ${ntotal}
+   fi
+done
 ```
 
 ***
