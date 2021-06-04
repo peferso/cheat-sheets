@@ -1,4 +1,4 @@
-# Bash utilities (part 1): Bash programming
+# Bash utilities (part 2): Bash programming
 
 ## Redirect stderr and stdout to trash
 
