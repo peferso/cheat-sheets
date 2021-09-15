@@ -110,6 +110,59 @@ left join
 ...
 ```
 
+## Local temporary variables
+
+Define variables that store values:
+```sql
+DEFINE dtbeg = "'03-09-21 19:00:00'";
+DEFINE dtend = "'03-09-21 20:31:00'";
+```
+
+And use them in queries code later as in the following example:
+```sql
+select  "Total mensajes", "Retriggers", "Status S", "Status F", "Status Null", "Status S"+"Status F"+"Status Null" as "Total"
+from (
+  select 
+    (select count(*) from TABLE_1 r where 
+          r.D_RECEIVED >= TO_TIMESTAMP(&dtbeg,'DD-MM-YY HH24:MI:SS') and
+          r.D_RECEIVED   <= TO_TIMESTAMP(&dtend,'DD-MM-YY HH24:MI:SS') 
+          and r.C_EXT_DATA not like '%:"PAR"%'
+          ) as "Total mensajes",
+    (select count(*) from TABLE_1 r where 
+          r.n_retrigger_id is not null and
+          r.D_RECEIVED >= TO_TIMESTAMP(&dtbeg,'DD-MM-YY HH24:MI:SS') and
+          r.D_RECEIVED   <= TO_TIMESTAMP(&dtend,'DD-MM-YY HH24:MI:SS') and
+          r.V_STATUS_CD is null       
+          and r.C_EXT_DATA not like '%:"PAR"%'          
+          ) as "Retriggers",  
+    (select count(*) from TABLE_1 r where 
+          r.n_retrigger_id is null and
+          r.D_RECEIVED >= TO_TIMESTAMP(&dtbeg,'DD-MM-YY HH24:MI:SS') and
+          r.D_RECEIVED   <= TO_TIMESTAMP(&dtend,'DD-MM-YY HH24:MI:SS') and
+          r.V_STATUS_CD = 'S'
+          and r.C_EXT_DATA not like '%:"PAR"%'
+          ) as "Status S",
+    (select count(*) from TABLE_1 r where 
+          r.n_retrigger_id is null and
+          r.D_RECEIVED >= TO_TIMESTAMP(&dtbeg,'DD-MM-YY HH24:MI:SS') and
+          r.D_RECEIVED   <= TO_TIMESTAMP(&dtend,'DD-MM-YY HH24:MI:SS') and
+          r.V_STATUS_CD = 'F'
+          and r.C_EXT_DATA not like '%:"PAR"%'
+          ) as "Status F",
+    (select count(*) from TABLE_1 r where 
+          r.n_retrigger_id is null and    
+          r.D_RECEIVED >= TO_TIMESTAMP(&dtbeg,'DD-MM-YY HH24:MI:SS') and
+          r.D_RECEIVED   <= TO_TIMESTAMP(&dtend,'DD-MM-YY HH24:MI:SS') and
+          r.V_STATUS_CD is null
+          and r.C_EXT_DATA not like '%:"PAR"%'
+          ) as "Status Null"
+  from 
+    dual
+  )
+;
+
+```
+
 ***
 
 Return to **[main page](../README.md)** 
