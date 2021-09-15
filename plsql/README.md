@@ -11,6 +11,8 @@ from
   EX_TABLE frd;
 ```
 
+Above we are starting to find at position 'i=REGEXP_INSTR(frd.C_EXT_DATA,'"requestId":"')+12'. The latter statemet searches in the string frd.C_EXT_DATA the substring *resquestId":"*, and provides the position where the substring is found (+12). Then, using this position 'i' as a start, 'REGEXP_SUBSTR(frd.C_EXT_DATA,'[^"]+', i, 1)' finds out the chain of characters including all (+ sign) and stopping whenever it finds the first occurrence of character *"*
+
 ## Working with timestamps
 
 Filter by timestamp:
