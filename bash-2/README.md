@@ -231,6 +231,13 @@ Replace all "word" occurencies by "new" in all file "FILE"
 sed -i -e "s/word/new/g" FILE
 ```
 
+Remove lines from a file that contain a substring 
+```sh
+while read line; do
+  [[ ${line} != *"RISK SCORE"* ]] && echo "$line" >> ${temp}
+done < $outputData
+```
+
 ## Date-Time stamp
 
 Store current date-time stamp in a variable
