@@ -37,6 +37,9 @@ This content is also on Github pages (presented with a fancy default theme), I i
 ## mySQL
 [mySQL](./mySQL/README.md)
 
+## plSQL (Oracle)
+[plSQL](./plsql/README.md)
+
 ## python
 [python](./python/README.md)
 
