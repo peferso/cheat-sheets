@@ -1,6 +1,6 @@
-# Introduction
+# R cheatsheet
 
-This notes contain several commands useful to use RStudio.
+This notes contain several commands useful to use in RStudio.
 I find mandatory to follow this [online book](https://r4ds.had.co.nz/index.html) by Hadley Wickham and Garret Grolemund. 
 
 # Basics
@@ -155,6 +155,36 @@ flights %>%
   group_by(year, month, day) %>% 
   summarise(mean = mean(dep_delay, na.rm = TRUE))
 ```
+
+# Utilities
+
+## Append strings
+
+Use *paste()* method to append strings
+```R
+reports_dir = paste(wd, "/reports", sep="")
+```
+
+## Export/Import R objects such as strings, lists
+
+Store the contents of an object in a local file:
+```R
+TF_PRE=NULL
+TF_PRE[1]="DBUSER"
+TF_PRE[2]="SID"
+TF_PRE[3]="DNS"
+TF_PRE[4]="PASSWD"
+TF_PRE[5]=66600
+saveRDS(TF_PRE, file = paste(wd,"/TF_PRE.rds", sep=""))
+```
+
+Import the contents of an object:
+```R
+
+```
+# Connection to oracle database
+
+
 
 ***
 
