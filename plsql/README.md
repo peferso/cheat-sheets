@@ -1,4 +1,4 @@
-# Basic introduction
+# PLSQL queries cheatsheet
 
 ## Regular expressions
 
