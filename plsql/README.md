@@ -57,6 +57,57 @@ from
   SOME_TAB au;
 ```
 
+## Control statements in query
+
+With the DECODE function we print out a row value for a new column based on conditions:
+
+```sql
+select
+        unique au.N_GRP_MSG_ID,
+        rd.D_RECEIVED as TSreceived,
+        DECODE(
+              rd.V_STATUS_CD, NULL, NULL,              
+              (max(au.D_RECEIVED) over (PARTITION BY au.N_GRP_MSG_ID)
+              )
+        ) as TSfinished,
+        DECODE(
+              rd.V_STATUS_CD, NULL, NULL,        
+              (max(au.D_RECEIVED) over (PARTITION BY au.N_GRP_MSG_ID)) - rd.D_RECEIVED 
+        ) as difTS
+from 
+    OFSAAFCCM.FSI_RT_AUDIT au, OFSAAFCCM.FSI_RT_RAW_DATA rd
+where 
+    rd.N_GRP_MSG_ID = au.N_GRP_MSG_ID;
+```
+
+In the where part we can use the following logic operators and much more
+```sql
+...
+where
+  au.COL1 != 'SUCCESS' and
+  frd.COL2 not like '%TXT%' and
+  frd.COL3 like '%dc12%' and
+  au.COL3 not in ('AA', 'BB', 'CD') and
+  au.COL3 in ('A1', 'B2') and
+  frd.COL4 is not null and
+  frd.COL5 is null and
+  
+```
+
+## Selects as tables
+
+We can group a select query into another select and treat the former as a normal table as follows:
+
+```sql
+select SEL_TAB.*, TAB2.*, TAB3.* from 
+  (
+    select a1.COL_1 C1, ...  from TAB1 a1, TAB2 a2 where ...
+  ) SEL_TAB
+left join
+  TABLE_2 TAB2 on SEL_TAB.C1 = TAB2.INDEX1
+...
+```
+
 ***
 
 Return to **[main page](../README.md)** 
