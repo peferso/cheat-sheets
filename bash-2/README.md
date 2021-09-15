@@ -27,6 +27,13 @@ then
 fi
 ```
 
+Check number of input arguments
+```sh
+if [ "$#" -ne 1 ]; then
+    echo "Illegal number of parameters"
+fi
+```
+
 Check if a file exists:
 ```sh
 exists=$( 2>/dev/null ls ${MAINDIR}/${TFFILE} )
