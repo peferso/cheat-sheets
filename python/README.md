@@ -134,7 +134,17 @@ is_it_satisfied = df["Recommendation based on Requirement"] == "yes"
 df_requiredRows = df[is_it_satisfied]
 ```
 
+## Add a column to a dataframe
 
+```python
+...
+    l_years = []
+    for index, row in df.iterrows():
+        years = row['batch_ts'].year - int(row['year'])
+        l_years.append(years)
+    df['years'] = l_years
+...
+```
 
 ***
 
