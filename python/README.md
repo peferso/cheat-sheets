@@ -17,6 +17,30 @@ print('json:', json.__version__)
 ```
 > Not all the packages have a `__version__` value.
 
+# Install environment into folder project
+
+First "cd" to project folder and then run
+
+```sh
+virtualenv -p python3 .
+```
+It will install the python environment in the project folder. 
+
+To activate the environment:
+
+```sh
+source project_folder/bin/activate
+```
+Once the environment is activated we can install the required packages with e.g.
+```sh
+pip install pandas
+```
+To list the packages installed in the activated environment:
+```sh
+pip freeze
+```
+The python code can be put into ```project_folder/src```.
+
 # Anaconda
 
 Anaconda is a software that provides a python package and environment manager, together with other tools such as Jupyter Notebooks, JupyteLab... 
@@ -146,6 +170,11 @@ df_requiredRows = df[is_it_satisfied]
 ...
 ```
 
+## Drop a column from a dataframe
+
+```python
+    df = df.drop('year', axis=1)
+```
 ***
 
 Return to **[main page](../README.md)** 
