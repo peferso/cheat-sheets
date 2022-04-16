@@ -86,6 +86,20 @@ myList[a:b]
 with `a`, `b` integer numbers.
 * `a`: is the position in the list where we start selecting elements, a-th element is included.
 * `b`: is the number of elements of the slice, in a way that the elements retrieved will be those with indexes values of $$a, a+1, a+2, ..., a+b-1 $$ 
+Lists can be created as follows:
+```python
+x = [ i for i in range(4) ]
+[item**2 for item in x]
+```
+## Printing
+
+Printing strings passing variables as arguments:
+```python
+a = 'bla bla'
+b = 3.46
+print('A thing: {one}, and another thing: {two}'.format(one=a,two=b))
+print('A thing: {}, and another thing: {}'.format(a,b))
+``` 
 
 ## The range function
 
@@ -94,6 +108,29 @@ The syntax of the range function is `range(a,b,step)`, it generates a list of in
 * `b+a`: is the last integer, if consistent with the `step` value.
 * `step`: is the value of the increment used to generate the list of numbers, the difference between consecutive elements. 
 
+## Lambda expressions, map and filter
+
+Lambda expressions are shorthands for function definitions. For example, if you want to operate over some float it is possible to declare a function or do it without a function declaration with a lambda expression:
+```python
+lambda x: x**(3/1.5) + x**8
+```
+The above declaration is equivalent to 
+```python
+def fun(x):
+	return x**(3/1.5) + x**8
+```
+We can apply such operation to a list of inputs with the help of map function:
+```python
+values = [1, 32, 11, 221, 134]
+list(map(fun, values))
+list(map(lambda x: x**(3/1.5) + x**8, values))
+```
+With the filter method, we can filter out elements satisfying a condition, for example
+```python
+elements = [1,2,3,4,5,6,7,8]
+list(filter(lambda x: x%2 != 0, elements))
+``` 
+The above filter uses a lambda function to evaluate each value in the list 'elements' checking if its module over 2 is different from zero, and keeps all elements that satisfy such condition (the odd numbers).
 
 # Pandas
 
