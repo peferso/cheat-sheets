@@ -20,6 +20,17 @@ git commit --amend --reset-author
 Check in which branch you are working now:
 ```sh
 git status
+git branch
+```
+
+## List all branches
+```sh
+git branch -a
+```
+
+## Pull all remote branches
+```sh
+git pull --all
 ```
 
 ## Create a new branch called "develop"
@@ -54,6 +65,40 @@ git merge newbranch
 Delete a branch if not needed
 ```sh
 git branch -d newbranch
+```
+
+## git fetch
+
+Download all branches and commits from origin:
+```sh
+git fetch origin 
+```
+
+Download commits and files from specific branch:
+```sh
+git fetch origin branch_name
+```
+
+Download all registered repositories and branches:
+```sh
+git fetch --all
+```
+
+To check the result of the command without actually applying changes:
+```sh
+git fetch ... --dry-run
+```
+
+## Git pull
+
+Checkout changes from master to current branch
+```sh
+git pull origin master(main)
+```
+
+Checkout changes from specific branch to current branch
+```sh
+git pull origin branch_name
 ```
 
 ## Git add
@@ -94,10 +139,4 @@ folder2/*
 !folder2/subfolder_or_file_included
 ```
 
-## git fetch
 
-Override existing local repository with GitHub version:
-```sh
-git fetch origin master
-git reset --hard origin/master
-```
