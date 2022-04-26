@@ -212,6 +212,26 @@ df_requiredRows = df[is_it_satisfied]
 ```python
     df = df.drop('year', axis=1)
 ```
+
+## Apply operations to dataframe rows
+Filter all rows which column contains a word or some text:
+```python
+df[df['col_name'].apply(lambda x: True if 'word' in x.lower().split(' ') else False)]
+
+df[df['col_name'].apply(lambda x: True if 'substring' in x.lower() else False)]
+```
+
+## Group by
+```python
+df.groupby('JobTitle')['Id'].count().sort_values(ascending=False)[0:5]
+```
+
+## Correlation of two columns
+```python
+df[['col_a', 'col_b']].corr()
+```
+
+
 ***
 
 Return to **[main page](../README.md)** 
