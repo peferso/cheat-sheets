@@ -78,6 +78,20 @@ ssh -i "path_to_pem_file" user@dns
 
 Generate a key pair... [TODO]
 
+Generate a public key from an already existing private key:
+```sh
+ssh-keygen -y -f id_rsa > id_rsa.pub
+```
+
+Migrate an already existing key:
+```sh
+cd .ssh
+touch id_rsa
+vi id_rsa # paste content of private key .pem file and save
+chown user:group id_rsa # the user authenticating must be the owner of the key
+chmod 600 id_rsa # permissions must be read/write only for the key owner
+```
+
 For a specific user, the key pairs are stored in the corresponding home under ```.ssh```, e.g.,
 ```sh
 /home/ec2-user/.ssh
