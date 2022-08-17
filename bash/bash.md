@@ -37,6 +37,32 @@ File can be ```*``` for all files in the working directory.
 
 File can be ```-r``` to search recursively in all files and directories contained in the working directory.
 
+### Tarballs
+
+Create a tarball file without compression of a folder in a different folder (note the ordering, destination goes first!)
+
+```sh
+tar -cvf PATH_TO_DESTINATION_FILE.tar SOURCE_FOLDER_1 SOURCE_FOLDER_2 ... SOURCE_FILE_1 SOURCE_FILE_2 ...
+```
+
+Use compression
+
+```sh
+tar -cvzf PATH_TO_DESTINATION_FILE.tar.gz  SOURCE_FOLDER_1 SOURCE_FOLDER_2 ... SOURCE_FILE_1 SOURCE_FILE_2 ...
+```
+
+List the contents of a tar file
+
+```sh
+tar -ztvf TARFILE
+```
+
+Unroll a tarball specifying the destination folder
+
+```sh
+tar -xvf TARFILE -C DESTINATION_FOLDER
+```
+
 ### ssh
 
 Ssh using an existing private key .pem file
