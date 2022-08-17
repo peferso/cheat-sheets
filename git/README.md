@@ -127,6 +127,18 @@ or remove a complete folder
 git rm -rf --cache pathtofolder
 ```
 
+## Merge a branch to incorporate changes to master
+
+```sh
+# Update progress in destination branch master
+git checkout master
+git pull
+# Merge feature branch 
+git merge FEATURE_BRANCH_NAME
+```
+
+Then, on github create a pull request of the two branches.
+
 ## .gitignore
 
 Ignore certain files systematically when adding changes creating a `.gitignore` file and adding the files
