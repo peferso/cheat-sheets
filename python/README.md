@@ -64,6 +64,19 @@ conda create -n envname python=3.8
 ```
 
 
+# Installing a package from code in a given folder
+
+If we want to install a library from a code repository and refer to the code in that repository location
+
+```sh
+cd CODE_REPOSITORY_ROOT_FOLDER
+pip install -e .
+```
+
+The modules from the repository can be imported in any other script using the same environment and the code will refer to the repository folder.
+
+If working with an ipykernel (jupyter server), after any change is done to the repository code it will be necessary to restart the kernel for the changes to apply.
+
 # Basic syntax: lists
 
 Python list indexing might be a bit funny compared with other frameworks. If we have this list:
