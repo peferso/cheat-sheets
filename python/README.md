@@ -109,7 +109,7 @@ Then paste the prompted url into your local browser.
 python -m ipykernel install --user --name=$CONDA_ENV
 ```
 
-## Enable RAM memory usage
+## Show RAM memory usage
 
 To show the jupyter server memory usage on the notebook, first stop the jupyter server. Then:
 
