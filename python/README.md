@@ -77,6 +77,49 @@ The modules from the repository can be imported in any other script using the sa
 
 If working with an ipykernel (jupyter server), after any change is done to the repository code it will be necessary to restart the kernel for the changes to apply.
 
+# Jupyter notebooks
+
+Install jupyter notebook
+
+```sh
+pip install ipykernel notebook
+```
+
+## Jupyter server on a remote host
+
+Run a jupyter server on a remote host:
+
+```sh
+jupyter notebook --no-browser --port=8080
+```
+
+It will promtp a token url.
+
+To connect to the jupyter server, first create an ssh tunnel to the server:
+
+```sh
+ssh -L 8080:localhost:8080 $USER@$SERVER
+```
+
+Then paste the prompted url into your local browser.
+
+## Include a python environment to be visible by the ipykernel
+
+```sh
+python -m ipykernel install --user --name=$CONDA_ENV
+```
+
+## Enable RAM memory usage
+
+To show the jupyter server memory usage on the notebook, first stop the jupyter server. Then:
+
+```sh
+pip install nbresuse
+jupyter nbextension enable --py nbresuse --sys-prefix
+```
+
+And start the jupyter server.
+
 # Basic syntax: lists
 
 Python list indexing might be a bit funny compared with other frameworks. If we have this list:
