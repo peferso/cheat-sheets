@@ -171,5 +171,6 @@ folder1
 folder2/*
 !folder2/subfolder_or_file_included
 ```
+***
 
-
+Return to **[main page](../README.md)**
