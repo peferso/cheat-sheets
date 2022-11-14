@@ -102,6 +102,36 @@ Now, lets discuss the four types of `JOIN` commands:
 * `RIGHT JOIN`: prints out every row of table B filling missing values of table A with nulls (rows of B with ID_B values missing in ID_A will have nulls in A columns)
 * `FULL JOIN`: also called `FULL OUTER JOIN`, prints out every row of A and B filling with nulls the columns with unmatched ID values. This is not supported by MySQL.
 
+# Other queries
+
+## Concatenate columns
+```sql
+SELECT COUNT(DISTINCT CONCAT(`id`, `file`)) FROM table;
+```
+
+## Show databases
+
+```sql
+SHOW DATABASES;
+```
+
+## Check max characters admitted in column
+
+```sql
+SELECT CHARACTER_MAXIMUM_LENGTH FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'my_schema' AND TABLE_NAME = 'tab' AND COLUMN_NAME = 'coll';
+```
+
+## Alter table workaround for very large tables:
+
+```sql
+CREATE TABLE raw_data_new LIKE raw_data;
+ALTER TABLE raw_data_new MODIFY report_id VARCHAR(256);
+INSERT INTO raw_data_new SELECT * FROM raw_data;
+RENAME TABLE raw_data TO raw_data_old;
+RENAME TABLE raw_data_new TO raw_data;
+DROP TABLE raw_data_old;
+```
+
 ***
 
 Return to **[main page](../README.md)**

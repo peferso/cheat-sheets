@@ -12,8 +12,29 @@ Personal shortcuts to configure my github user in EC2 instance:
 ```sh
 git config --global user.name "peferso"
 git config --global user.email p.fdez.s.90@gmail.com
-git commit --amend --reset-author
 ```
+
+Check the user name locally in a repository:
+```sh
+git config --global --list --show-origin
+```
+
+## Private repositories
+
+An ssh key should locally exists, protected with a password (not sure if the same as the GH account), which public key should be added to the list of known keys on the GitHub account. To create a new ssh key pair locally:
+
+```sh
+ssh-keygen -t ed25519 -C "p.fdez.s.90@gmail.com"
+```
+
+Everytime we want to interact with the private repo, there should be an ssh session running and using this key, this can be done with:
+
+```sh
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_rsa_gh_key
+```
+
 
 # Branches
 
