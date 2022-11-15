@@ -24,6 +24,22 @@ Sort percentage of CPU's usage by user and process
 ps -eo pcpu,pid,user,args | sort -r -k1 | less
 ```
 
+A fancier top
+```sh
+htop
+```
+
+Sort processes by start time:
+```sh
+ps -ef --sort=start_time
+```
+
+Processes of a given user:
+```sh
+ps -fu username
+ps -fu username --sort=start_time
+```
+
 ## Connectivity
 
 Get the ip address:
