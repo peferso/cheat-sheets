@@ -44,6 +44,11 @@ git status
 git branch
 ```
 
+Create a new branch and switch to it
+```sh
+git checkout -b new_branch_name
+```
+
 ## List all branches
 ```sh
 git branch -a
