@@ -410,6 +410,22 @@ import seaborn as sns
 %matplotlib inline
 ```
 
+# Capturing Exceptions
+
+Capture a specific sklearn warning:
+
+```python
+from sklearn.exceptions import ConvergenceWarning
+import numpy as np
+import warnings
+try:
+    np.seterr(all='warn')
+    warnings.simplefilter("error", ConvergenceWarning)
+    classifier.train()
+except ConvergenceWarning as msg:
+    # DO something
+    raise Exception(msg)
+```
 
 
 ***
