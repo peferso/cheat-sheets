@@ -83,6 +83,14 @@ By exact name
 find -type f -name exact-name.ext
 ```
 
+### Links
+
+Create a symbolic link 
+
+```sh
+ln -s {source-filename} {symbolic-filename}
+```
+
 ### Tarballs
 
 Create a tarball file without compression of a folder in a different folder (note the ordering, destination goes first!)

@@ -8,15 +8,28 @@ git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
 ```
 
-Personal shortcuts to configure my github user in EC2 instance:
+Modify user and email globally:
 ```sh
-git config --global user.name "peferso"
-git config --global user.email p.fdez.s.90@gmail.com
+git config --system user.name "username"
+git config --system user.email "mailexample@mail"
 ```
 
-Check the user name locally in a repository:
+Modify user and email for linux user:
 ```sh
-git config --global --list --show-origin
+git config --global user.name "globalname"
+git config --global user.email "mailexampl@mail"
+```
+
+Modify user and email on current git repository:
+```sh
+git config --local user.name "nameproject"
+git config --local user.email "mailexample@mail"
+```
+
+Check the user name:
+```sh
+git config --get user.name
+git config --get user.email
 ```
 
 ## Private repositories
