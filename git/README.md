@@ -24,7 +24,7 @@ git config --global --list --show-origin
 An ssh key should locally exists, protected with a password (not sure if the same as the GH account), which public key should be added to the list of known keys on the GitHub account. To create a new ssh key pair locally:
 
 ```sh
-ssh-keygen -t ed25519 -C "p.fdez.s.90@gmail.com"
+ssh-keygen -t ed25519 -C "anemail@email.com"
 ```
 
 Everytime we want to interact with the private repo, there should be an ssh session running and using this key, this can be done with:
