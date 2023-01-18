@@ -282,6 +282,15 @@ Store current date-time stamp in a variable
 dtimestamp=$( echo "$(date +'%Y%m%d-%H_%M_%S_%3N')" )
 ```
 
+Add timestamp to echo's with a log format:
+```sh
+timestamp () {
+    echo "[`date +'%Y-%m-%d %H:%M:%S'`]"
+}
+
+echo "$(timestamp) Some log message."
+```
+
 ## Miscellaneous
 
 Verify number of occurrences in a set of files:
