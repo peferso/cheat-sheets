@@ -63,6 +63,20 @@ Create a new environment with specific python version
 conda create -n envname python=3.8
 ```
 
+## Activating conda environments from bash script
+
+If using miniconda
+
+```sh
+source ${HOME}/miniconda3/etc/profile.d/conda.sh
+conda activate ${CONDAENV}
+```
+
+To check if the environment has been activated
+
+```sh
+echo "$(timestamp) activated conda environment: `echo $CONDA_DEFAULT_ENV`"
+```
 
 # Installing a package from code in a given folder
 
