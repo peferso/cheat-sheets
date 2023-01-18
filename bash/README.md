@@ -83,6 +83,12 @@ By exact name
 find -type f -name exact-name.ext
 ```
 
+Display json contents pretty:
+
+```sh
+pyhon -m json.tool json_file.json
+```
+
 ### Links
 
 Create a symbolic link 
