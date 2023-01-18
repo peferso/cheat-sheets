@@ -99,7 +99,44 @@ Print the number of elements of an array
 echo "${#array[@]}"
 ```
 
-An 
+Associative arrays, or arrays with keys-value pairs, example of dynamic creation from file:
+
+```sh
+declare -A REPOSITORIES
+for rpt in `cat "${repositories_file}" | grep -v '#'`; do
+	rpt_name=`echo ${rpt} | awk -F: '{print $1}'`
+	rpt_flag=`echo ${rpt} | awk -F: '{print $2}'`
+	AAT_REPOSITORIES+=(["${rpt_name}"]="${rpt_flag}")
+done
+```
+
+Another example:
+
+```sh
+declare -a myArray
+
+myArray[a]=123
+myArray[b]=343
+myArray+=([c]=345 [c]=054)
+```
+
+Access the keys:
+
+```sh
+for key in "${!array[@]}"; do
+...
+done
+
+echo "${!array[@]}
+```
+
+Access the values:
+
+```sh
+echo ${myArray[a]}
+echo ${myArray[@]}
+```
+
 ## Functions
 
 Example of declaring a function called "fun"
