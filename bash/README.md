@@ -1,6 +1,6 @@
 # Bash utilities (part 1): System management
 
-## Processes
+# Processes
 
 Print out the running processes:
 
@@ -40,7 +40,7 @@ ps -fu username
 ps -fu username --sort=start_time
 ```
 
-## Connectivity
+# Connectivity
 
 Get the ip address:
 
@@ -53,7 +53,7 @@ exec 3<> /dev/tcp/180.18.153.59/7222
 ```
 if there is not a *[Connection timed out]*, then it is accessible. Output can be checked with ```echo $?```.
 
-## File management
+# File management
 
 Find all lines that contain a pattern 
 
@@ -89,7 +89,7 @@ Display json contents pretty:
 pyhon -m json.tool json_file.json
 ```
 
-### Links
+# Links
 
 Create a symbolic link 
 
@@ -97,7 +97,7 @@ Create a symbolic link
 ln -s {source-filename} {symbolic-filename}
 ```
 
-### Tarballs
+# Tarballs
 
 Create a tarball file without compression of a folder in a different folder (note the ordering, destination goes first!)
 
@@ -123,7 +123,7 @@ Unroll a tarball specifying the destination folder
 tar -xvf TARFILE -C DESTINATION_FOLDER
 ```
 
-## ssh
+# ssh
 
 Ssh using an existing private key .pem file
 ```sh
@@ -161,7 +161,7 @@ sudo chmod 600 $privateKeyFile
 sudo chmod 600 $publicKeyFile
 ```
 
-## Environment variables
+# Environment variables
 
 Create a new one using the terminal
 ```sh
@@ -179,7 +179,7 @@ echo 'NEWVAR="content/asdf"' >> /etc/environment
 echo 'PUBLIC_IP='$PUBLIC_IP >> /etc/environment
 ```
 
-## Groups and users
+# Groups and users
 
 Create a group
 ```sh
@@ -211,7 +211,7 @@ Change to a user of a service account (without shell by design), such as jenkins
 sudo su -s /bin/bash jenkins
 ```
 
-## Adding a directory to the PATH variable
+# Adding a directory to the PATH variable
 
 ```sh
 export PATH=new_path:$PATH
@@ -222,7 +222,7 @@ To see which directory is used for a program
 which python
 ```
 
-## Aliases
+# Aliases
 
 Define alias
 
@@ -243,7 +243,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 ```
 
-### awk inside alias
+## awk inside alias
 
 Aliases are declared between single quotes.
 
