@@ -222,6 +222,43 @@ To see which directory is used for a program
 which python
 ```
 
+## Aliases
+
+Define alias
+
+```sh
+alias aliasname='some command'
+```
+
+A useful method is to gather aliases in files `~/.bash_aliases`, then load them during profile adding to `~/.profile` or `~/.bashrc` the following 
+
+```sh
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+```
+
+### awk inside alias
+
+Aliases are declared between single quotes.
+
+When using awk, the print part goes also between single quotes:
+
+```sh
+cat file.txt | grep 'log-2' | awk -F ; '{print $2}'
+```
+
+To use the awk command above in an alias we should write single quotes `'` as `'\''`:
+
+```sh
+alias an_awk_command='cat file.txt | grep '\''log-2'\'' | awk -F ; '\''{print $2}'\'''
+```
+
 ***
 
 Continue to **[bash - part 2](../bash-2/README.md)** 
