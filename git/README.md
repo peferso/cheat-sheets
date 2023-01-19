@@ -48,6 +48,25 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa_gh_key
 ```
 
+It might be useful to setup an auxiliary script such as:
+
+```sh
+#!/bin/bash
+
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_rsa_github_1
+```
+
+in some directory (e.g. `~/.utilities/setup_github_ssh_key_1.sh, permissions 744). 
+
+Further, we could add an alias to invoke the script
+
+```sh
+cat ~/.bash_aliases
+
+alias setup_gihub_key_1='source ~/.utilities/setup_github_ssh_key_1.sh'
+```
 
 # Branches
 
