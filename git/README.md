@@ -125,6 +125,22 @@ Delete a branch if not needed
 git branch -d newbranch
 ```
 
+## Remove commit
+
+Remove the last commit:
+
+```sh
+git reset --hard HEAD^
+```
+
+Remove the last 2 commits:
+
+```sh
+git reset --hard HEAD~2
+```
+
+Without `--hard` flag the commits are removed but not the changes in the code.
+
 ## git fetch
 
 Download all branches and commits from origin:
