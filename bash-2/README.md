@@ -45,7 +45,17 @@ else
 fi
 ```
 
+Compare two integers:
 
+```sh
+if (( a > b )); then
+    ...
+fi
+# or
+if [ "$a" -gt "$b" ]; then
+    ...
+fi
+```
 
 ## Arrays
 
