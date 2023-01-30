@@ -117,6 +117,13 @@ ssh -L 8080:localhost:8080 $USER@$SERVER
 
 Then paste the prompted url into your local browser.
 
+## Display all characters in cell and rows of dataframe
+
+```python
+pd.set_option('display.max_rows', 1000)
+pd.set_option('display.max_colwidth', None)
+```
+
 ## Include a python environment to be visible by the ipykernel
 
 ```sh
