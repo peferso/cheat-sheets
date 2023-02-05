@@ -152,7 +152,7 @@ echo ${myArray[@]}
 Example of declaring a function called "fun"
 ```sh
 fun () {
- echo "Hello World! My name is $0 and I like $1"
+ echo "Hello World! My name is $1 and I like $2"
 }
 ```
 so that, we invoke it as follows:
