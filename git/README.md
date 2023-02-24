@@ -106,6 +106,11 @@ git checkout develop
 git checkout -b newbranch
 ```
 
+## Delete a branch locally
+```sh
+git branch -d branchname
+```
+
 ## Save workflow
 
 Once you are in the desired branch, change the code and commit the changes 
