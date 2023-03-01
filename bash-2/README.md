@@ -1,6 +1,6 @@
 # Bash utilities (part 2): Bash programming
 
-## Redirect stderr and stdout to trash
+# Redirect stderr and stdout to trash
 
 Only stderr
 ```sh
@@ -17,7 +17,7 @@ Both stderr and stdout
 2> /dev/null 1>&2
 ```
 
-## If statement
+# If statement
 
 Check if input is empty
 ```sh
@@ -57,7 +57,7 @@ if [ "$a" -gt "$b" ]; then
 fi
 ```
 
-## Arrays
+# Arrays
 
 Declare arrays
 ```sh
@@ -147,7 +147,7 @@ echo ${myArray[a]}
 echo ${myArray[@]}
 ```
 
-## Functions
+# Functions
 
 Example of declaring a function called "fun"
 ```sh
@@ -160,7 +160,7 @@ so that, we invoke it as follows:
 fun "Peter" "bash programming"
 ```
 
-## Split a string using a delimiter
+# Split a string using a delimiter
 
 Function that splits a string and stores elements splitted in an array
 ```sh
@@ -188,7 +188,7 @@ partLeft=${string%%"$delimiter"*}
 partRight=${string#*"$delimiter"}
 ```
 
-## Store stdout in a variable
+# Store stdout in a variable
 
 Examples
 ```sh
@@ -196,7 +196,7 @@ var1=$(echo ls -lrt)
 var2=$(cat file.log)
 ```
 
-## String manipulation
+# String manipulation
 
 Check if a string contains only alphanumeric and {"```-```", "```_```"} characters.
 ```sh
@@ -271,7 +271,13 @@ echo ${string/.*/repl01} # replaces first occurrence of pattern in string
 echo ${string//.*/repl01} # replaces all occurrences of pattern in string
 ```
 
-## File manipulation
+# Get script file name inside script
+
+```sh
+script_name=`basename "$0"`
+```
+
+# File manipulation
 
 Replace all "word" occurencies by "new" in all file "FILE"
 ```sh
@@ -285,7 +291,7 @@ while read line; do
 done < $outputData
 ```
 
-## Date-Time stamp
+# Date-Time stamp
 
 Store current date-time stamp in a variable
 ```sh
@@ -301,7 +307,7 @@ timestamp () {
 echo "$(timestamp) Some log message."
 ```
 
-## Miscellaneous
+# Miscellaneous
 
 Verify number of occurrences in a set of files:
 ```sh
