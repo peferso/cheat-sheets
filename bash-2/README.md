@@ -283,7 +283,7 @@ At the root of the repository, create a **unique** dummy file.
 
 For example, if the repository is named "etl", the dummy file could be `.etl.dir`.
 
-Next, inside the script the repository absolute path can be found with:
+Next, in the script code, the repository absolute path can be found with:
 
 ```sh
 repo_dir=`find ${HOME} -name ".etl.dir" -type f -print -quit`
