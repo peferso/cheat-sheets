@@ -277,14 +277,29 @@ echo ${string//.*/repl01} # replaces all occurrences of pattern in string
 script_name=`basename "$0"`
 ```
 
+# Locate repository absolute path (under home)
+
+At the root of the repository, create a **unique** dummy file.
+
+For example, if the repository is named "etl", the dummy file could be `.etl.dir`.
+
+Next, inside the script the repository absolute path can be found with:
+
+```sh
+repo_dir=`find ${HOME} -name ".etl.dir" -type f -print -quit`
+repo_dir=${script_dir%/*}
+```
+
 # File manipulation
 
 Replace all "word" occurencies by "new" in all file "FILE"
+
 ```sh
 sed -i -e "s/word/new/g" FILE
 ```
 
 Remove lines from a file that contain a substring 
+
 ```sh
 while read line; do
   [[ ${line} != *"RISK SCORE"* ]] && echo "$line" >> ${temp}
