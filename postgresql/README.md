@@ -57,3 +57,16 @@ sudo service postgresql restart
 psql -U newuser -h localhost
 ```
 
+# Commands
+
+See commands available
+
+```psql
+\?
+```
+
+## Roles and permissions
+
+```psql
+GRANT group_role TO role_name
+```
