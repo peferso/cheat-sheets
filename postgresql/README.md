@@ -31,7 +31,7 @@ Login with postgres user:
 sudo -u postgres psql
 ```
 Find location of hba file
-```psql
+```postgresql
 SHOW hba_file;
 ```
 backup the file (example):
