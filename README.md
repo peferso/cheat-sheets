@@ -38,6 +38,10 @@ This content is also on Github pages (presented with a fancy default theme), I i
 ## python
 [python](./python/README.md)
 
+## PostgreSQL
+
+[PostgreSQL](./postgresql/README.md)
+
 ## R
 [R](./R/README.md)
 
