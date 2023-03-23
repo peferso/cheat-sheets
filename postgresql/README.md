@@ -12,17 +12,24 @@ sudo service postgresql start
 
 # Create user
 
+```postgresql
 sudo -u postgres createuser newuser;
+```
 
 # Create database for user
+```postgresql
 create database newuser with owner = newuser;
 grant all privileges on database newuser to newuser;
 alter user newuser createdb;
+```
 
 # Set password
 
+```
 sudo -u postgres psql
 alter user newuser with encrypted password 'apass'
+```
+
 
 # Edit hba_file
 
