@@ -12,21 +12,33 @@ sudo service postgresql start
 
 # Create user
 
-```postgresql
-sudo -u postgres createuser newuser;
+```sh
+sudo -u postgres createuser newuser
 ```
 
 # Create database for user
+
 ```postgresql
 create database newuser with owner = newuser;
 grant all privileges on database newuser to newuser;
+```
+
+Grant additional permissions to create dbs if necessary:
+```postgresql
 alter user newuser createdb;
 ```
 
 # Set password
 
-```
+Login as admin
+
+```sh
 sudo -u postgres psql
+```
+
+Change pass
+
+```postgresql
 alter user newuser with encrypted password 'apass'
 ```
 
@@ -66,14 +78,18 @@ psql -U newuser -h localhost
 
 # Commands
 
-See commands available
+| Command | Description |
+| ------- | ----------- |
+| \l+     | List databases info and size |
+| \c DATABASE | connect to DATABASE |
+| \dt+ | list tables info |
+| \d+ TABLE | show table columns details |
+| \q | exit |
+| \? | Show help |
 
-```psql
-\?
-```
 
 ## Roles and permissions
 
-```psql
+```postgresql
 GRANT group_role TO role_name
 ```
