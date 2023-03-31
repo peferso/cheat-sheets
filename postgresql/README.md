@@ -93,3 +93,54 @@ psql -U newuser -h localhost
 ```postgresql
 GRANT group_role TO role_name
 ```
+
+## Create a dump
+
+```sh
+pg_dump DATABASE_NAME \
+	--encoding=UTF8 \
+	--file=DUMP_FILE_NAME.sql \
+	--format=p \ # plain format
+	--no-owner \ # avoid ownership statements, so that the user importing the dump later will own the tables
+	--verbose -h localhost -U postgres; # connection parameters, use required user
+```
+
+or in cmd (windows)
+
+```sh
+pg_dump "DATABASE_NAME" \
+	--encoding "UTF8" \
+	--file "DUMP_FILE_NAME.sql" \
+	--format "p" \ # plain format
+	--no-owner \ # avoid ownership statements, so that the user importing the dump later will own the tables
+	--verbose -h "localhost" -U "postgres"; # connection parameters, use required user
+```
+
+## Import a dump
+
+Create a target database:
+
+```sh
+psql -U ${db_user} -h localhost -c "DROP DATABASE IF EXISTS ${import_db_name}";
+psql -U ${db_user} -h localhost -c "CREATE DATABASE ${import_db_name} OWNER=${db_user}";
+``` 
+
+Import using pg_dump
+```sh
+pg_restore ${dump_file} \
+        -U ${db_user}\
+        -h localhost \
+        --dbname=${import_db_name}  \
+	    --no-owner \
+	    --role=${db_user} \
+        --no-acl \
+        --verbose 2>&1| tee -a $logfile
+```
+
+Import using psql if format is plain (sql script)
+```sh
+psql -f ${dump_file} \
+        -U ${db_user}\
+        -h localhost \
+        -d ${import_db_name} 2>&1| tee -a $logfile
+```
