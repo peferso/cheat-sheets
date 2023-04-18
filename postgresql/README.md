@@ -144,3 +144,28 @@ psql -f ${dump_file} \
         -h localhost \
         -d ${import_db_name} 2>&1| tee -a $logfile
 ```
+
+## Timezone
+
+Modify time zone in current session
+
+```sql
+SET TIME ZONE 'UTC';
+```
+
+This will add the corresponding "+HH" to the timestamps when printing or filtering them
+
+Permanently modify the time zone:
+
+1. Locate "postgresql.conf" en el sistema.
+```sql
+sudo -u postgres psql -c 'SHOW config_file'
+```
+2. Modify variable "timezone"
+```sh
+timezone = 'UTC'
+```
+3. Restart ddbb
+```sh
+sudo service postgresql restart
+```
