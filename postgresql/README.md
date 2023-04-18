@@ -88,13 +88,13 @@ psql -U newuser -h localhost
 | \? | Show help |
 
 
-## Roles and permissions
+# Roles and permissions
 
 ```postgresql
 GRANT group_role TO role_name
 ```
 
-## Create a dump
+# Create a dump
 
 ```sh
 pg_dump DATABASE_NAME \
@@ -116,7 +116,7 @@ pg_dump "DATABASE_NAME" \
 	--verbose -h "localhost" -U "postgres"; # connection parameters, use required user
 ```
 
-## Import a dump
+# Import a dump
 
 Create a target database:
 
@@ -145,7 +145,7 @@ psql -f ${dump_file} \
         -d ${import_db_name} 2>&1| tee -a $logfile
 ```
 
-## Timezone
+# Timezone
 
 Modify time zone in current session
 
@@ -157,7 +157,7 @@ This will add the corresponding "+HH" to the timestamps when printing or filteri
 
 Permanently modify the time zone:
 
-1. Locate "postgresql.conf" en el sistema.
+1. Locate "postgresql.conf" file.
 ```sql
 sudo -u postgres psql -c 'SHOW config_file'
 ```
