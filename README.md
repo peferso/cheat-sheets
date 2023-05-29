@@ -38,6 +38,9 @@ This content is also on Github pages (presented with a fancy default theme), I i
 ## python
 [python](./python/README.md)
 
+## python (Pandas)
+[python](./python-pandas/README.md)
+
 ## PostgreSQL
 
 [PostgreSQL](./postgresql/README.md)
