@@ -1,5 +1,10 @@
 # Pandas
 
+Import Pandas:
+```python
+import pandas as pd
+```
+
 # General settings
 
 | Command | Description |
@@ -10,13 +15,6 @@
 # Add days to a date column
 
 # Remove timezone
-
-# Pandas
-
-Import Pandas:
-```python
-import pandas as pd
-```
 
 # Count number of rows and columns
 
