@@ -14,7 +14,28 @@ import pandas as pd
 
 # Date operations
 
+First, transform the column to datetime format specifying the 
+string format to be parsed:
+
+```python
+df[col] = pd.to_datetime(df[col], format='%Y-%m-%d', errors=_errors)
+```
+
+By setting `_errors` to `raise` (default), inconsistent dates will
+raise exceptions. To ignore them and set as missing use `coerce`.
+
 ## Add days to a date column
+
+```python
+df[col] = df[col] + pd.Timedelta(ndays, unit='D')
+```
+
+## Get the time difference among two dates
+
+```python
+(t2 - t1).days
+```
+
 
 ## Remove timezone
 
