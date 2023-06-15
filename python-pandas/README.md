@@ -9,6 +9,7 @@ import pandas as pd
 
 | Command | Description |
 | ------- | ----------- |
+| `pd.set_option('display.max_columns', 1000)`  | Increase the number of columns displayed |
 | `pd.set_option('display.max_rows', 1000)`     | Increase the number of rows displayed |
 | `pd.set_option('display.max_colwidth', None)` | Increase the cell size limit |
 
