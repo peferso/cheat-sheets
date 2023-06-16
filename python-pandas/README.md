@@ -31,6 +31,12 @@ raise exceptions. To ignore them and set as missing use `coerce`.
 df[col] = df[col] + pd.Timedelta(ndays, unit='D')
 ```
 
+## Add months to a date
+
+```python
+pd.to_datetime(a_date_string, format='%Y-%m-%d') + pd.DateOffset(months=nmonths)
+```
+
 ## Get the time difference among two dates
 
 ```python
