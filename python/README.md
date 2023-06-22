@@ -329,6 +329,76 @@ level = getattr(logging, level_name)
 logger.setLevel(level)
 ```
 
+# Parallelization
+
+Use ray
+
+```python
+import ray
+from tqdm import tqdm
+
+
+def some_method(ncores):
+	"""
+	Here we parallelize
+	"""
+	...
+	if ncores > 0:
+		ray.init(
+			num_cpus=ncores,
+			log_to_driver=True
+		)
+		obj_ids = [
+			compute_one_case_remote.remote(case) for case in cases_to_compute
+		]
+		_generation_output = [
+			x for x in tqdm(to_iterator(obj_ids), total=len(obj_ids))
+		]
+		ray.shutdown()
+	else:
+        _generation_output = [
+			compute_one_case(case) for case in tqdm(cases_to_compute)
+		]
+	for case, result in _generation_output:
+		# retrieve the result of each case
+		
+
+
+def to_iterator(obj_ids):
+    """
+	Helper function that takes the parallelized ray entities and allows
+    to track the progress of the reports parsing with tqdm.
+
+    Parameters
+    ----------
+        obj_ids : ray.remote("input case") objects list
+
+    Yields
+    ------
+        returns the result of each parallelized computation iteratively
+    """
+    while obj_ids:
+        done, obj_ids = ray.wait(obj_ids)
+        yield ray.get(done[0])
+
+
+@ray.remote
+def compute_one_case_remote(case):
+	"""
+	Ray wrapper function needed
+	"""
+    return compute_one_case(case)
+
+
+def compute_one_case(case):
+	"""
+	Calculation to parallelize
+	"""
+	... # do something with input
+    return case, result
+
+```
+
 ***
 
 Return to **[main page](../README.md)** 
