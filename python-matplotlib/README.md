@@ -58,6 +58,101 @@ legend_prop = font_manager.FontProperties(size=font_size)
 plt.legend(prop=legend_prop, loc='upper left')
 ```
 
+# multiple plots
+```python
+plt.subplot(n, m, 1) # declare a grid of plots with n rows and m columns and choose the 1 one
+plt.plot(x,y,...) # plot
+...
+plt.subplot(n, m, 2) # choose the next item in the plots grid
+plt.plot(x,y,...)
+...
+```
+
+# Object oriented way
+
+A plot
+```python
+fig = plt.figure() # create canvas, figure object
+
+axes = fig.add_axes([0.1,0.1,0.8,0.8]) # left position coordinates and width and height
+
+axes.plot(x,y)
+axes.set_xlabel(string1)
+axes.set_ylabel(string2)
+axes.set_title(title)
+```
+
+A plot inside a plot
+```python
+fig = plt.figure() # create canvas, figure object
+
+axes1 = fig.add_axes([0.1,0.1,0.8,0.8])
+axes2 = fig.add_axes([0.2,0.5,0.4,0.5])
+```
+
+Subplots
+```python
+fig, axes = plt.subplots(nrows=n, ncols=m) # devuelve una lista de objetos "axes"
+
+axes[0].plot(x,y)
+axes[0].set_title('first plot')
+
+axes[1].plot(y,x)
+axes[1].set_title('second plot')
+
+plt.tight_layout() # prevents overlapping
+```
+
+Legends
+```python
+fig = plt.figure()
+
+ax = fig.add_axes([0,0,1,1])
+
+ax.plot(x,x**2, label = 'X squared')
+ax.plot(x,x**3, label = 'X cubed')
+
+ax.legend(loc=0) # use location code, check documentation
+
+plt.show()
+```
+
+Plot style
+```python
+...
+ax.plot(x ,y, 
+	color='#RGB_Hex_Code', 
+	lw=2 # multiplies the default with of the line , 
+	alpha=0.5 # transparency, 
+	ls='code', 
+	marker='code',
+	markersize=scale,
+	markerfacecolor=color,
+	markeredgewidth=scale
+	markeredgecolor=color)
+	
+ax.set_xlim([x1,x2])# bounds of x axis
+ax.set_ylim([y1,y2])# bounds of y axis
+```
+
+
+Figure size and DPI (dots per inch)
+```python
+fig = plt.figure(figsize=(3,2), dpi=100)
+```
+
+Save a figure to a file
+```python
+fig.savefig('my_picture.png', dpi = 200) # extension applied is png, but we can use others such as jpeg...
+```
+
+# Seaborn
+
+```python
+import seaborn as sns
+%matplotlib inline
+```
+
 ***
 
 Return to **[main page](../README.md)** 

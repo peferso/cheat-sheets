@@ -134,50 +134,6 @@ jupyter nbextension enable --py nbresuse --sys-prefix
 
 And start the jupyter server.
 
-# Basic syntax: lists
-
-Python list indexing might be a bit funny compared with other frameworks. If we have this list:
-```python
-myList = ['a', 1, 'b', 'c', 4]
-```
-Then the elements can be accessed:
-```python
-myList[0:]
-myList[1:]
-myList[2:]
-myList[3:]
-myList[4:]
-```
-The last element is `myList[-1:]`, and the rest can be also accessed in reverse order: `myList[-2:]`, `myList[-3:]`...
-To get slices then we must be careful. The notation is:
-```python
-myList[a:b]
-```
-with `a`, `b` integer numbers.
-* `a`: is the position in the list where we start selecting elements, a-th element is included.
-* `b`: is the number of elements of the slice, in a way that the elements retrieved will be those with indexes values of $$a, a+1, a+2, ..., a+b-1 $$ 
-Lists can be created as follows:
-```python
-x = [ i for i in range(4) ]
-[item**2 for item in x]
-```
-## Printing
-
-Printing strings passing variables as arguments:
-```python
-a = 'bla bla'
-b = 3.46
-print('A thing: {one}, and another thing: {two}'.format(one=a,two=b))
-print('A thing: {}, and another thing: {}'.format(a,b))
-``` 
-
-## The range function
-
-The syntax of the range function is `range(a,b,step)`, it generates a list of integers where
-* `a`: is the first integer 
-* `b+a`: is the last integer, if consistent with the `step` value.
-* `step`: is the value of the increment used to generate the list of numbers, the difference between consecutive elements. 
-
 ## Lambda expressions, map and filter
 
 Lambda expressions are shorthands for function definitions. For example, if you want to operate over some float it is possible to declare a function or do it without a function declaration with a lambda expression:
@@ -215,116 +171,6 @@ x = np.linspace(0, 5, 11) # array of 11 equally distance points ranging from 0 t
 x = np.array(list(1,2,3,4,5)) # array from list
 ```
 
-# Matplotlib
-
-## Loading matplotlib 
-```python
-import matplotlib.pyplot as plt
-%matplotlib inline # this line allows to depict plots in a jupyter notebook
-```
-
-## plot np arrays
-```python
-plt.plot(x, y) # generate the graph
-plt.xlabel(string1) # add label to x axis
-plt.ylabel(string2) # add label to y axis
-plt.show() # show the plot (analogous to "print" method)
-```
-
-## multiple plots
-```python
-plt.subplot(n, m, 1) # declare a grid of plots with n rows and m columns and choose the 1 one
-plt.plot(x,y,...) # plot
-...
-plt.subplot(n, m, 2) # choose the next item in the plots grid
-plt.plot(x,y,...)
-...
-```
-
-## Object oriented method
-A plot
-```python
-fig = plt.figure() # create canvas, figure object
-
-axes = fig.add_axes([0.1,0.1,0.8,0.8]) # left position coordinates and width and height
-
-axes.plot(x,y)
-axes.set_xlabel(string1)
-axes.set_ylabel(string2)
-axes.set_title(title)
-```
-
-A plot inside a plot
-```python
-fig = plt.figure() # create canvas, figure object
-
-axes1 = fig.add_axes([0.1,0.1,0.8,0.8])
-axes2 = fig.add_axes([0.2,0.5,0.4,0.5])
-```
-
-Subplots
-```python
-fig, axes = plt.subplots(nrows=n, ncols=m) # devuelve una lista de objetos "axes"
-
-axes[0].plot(x,y)
-axes[0].set_title('first plot')
-
-axes[1].plot(y,x)
-axes[1].set_title('second plot')
-
-plt.tight_layout() # prevents overlapping
-```
-
-Legends
-```python
-fig = plt.figure()
-
-ax = fig.add_axes([0,0,1,1])
-
-ax.plot(x,x**2, label = 'X squared')
-ax.plot(x,x**3, label = 'X cubed')
-
-ax.legend(loc=0) # use location code, check documentation
-
-plt.show()
-```
-
-Plot style
-```python
-...
-ax.plot(x ,y, 
-	color='#RGB_Hex_Code', 
-	lw=2 # multiplies the default with of the line , 
-	alpha=0.5 # transparency, 
-	ls='code', 
-	marker='code',
-	markersize=scale,
-	markerfacecolor=color,
-	markeredgewidth=scale
-	markeredgecolor=color)
-	
-ax.set_xlim([x1,x2])# bounds of x axis
-ax.set_ylim([y1,y2])# bounds of y axis
-```
-
-
-Figure size and DPI (dots per inch)
-```python
-fig = plt.figure(figsize=(3,2), dpi=100)
-```
-
-Save a figure to a file
-```python
-fig.savefig('my_picture.png', dpi = 200) # extension applied is png, but we can use others such as jpeg...
-```
-
-# Seaborn
-
-```python
-import seaborn as sns
-%matplotlib inline
-```
-
 # Capturing Exceptions
 
 Capture a specific sklearn warning:
@@ -342,6 +188,146 @@ except ConvergenceWarning as msg:
     raise Exception(msg)
 ```
 
+# Argsparser: pass input parameters to script via command line
+
+Using argsparse
+
+```python
+def init_argparse() -> argparse.ArgumentParser:
+	...
+    return parser
+
+
+def main():
+    logger.info('Script starts...')
+    parser = init_argparse()
+    args = parser.parse_args()
+    if 'verbose' in dir(args):
+        logger.setLevel(logging.DEBUG)
+	par_1 = args.par_1
+	...
+```
+
+Where input parameters can be defined in `init_argsparse()` as follows:
+
+```python
+def init_argparse() -> argparse.ArgumentParser:
+    """Initialize the Argument Parser
+	to handle the input arguments passed
+    to the script.
+    Returns:
+        argparse.ArgumentParser: argument parser object
+    """
+    parser = argparse.ArgumentParser(
+       usage='%(prog)s action -o [OPTION]',
+       description=(
+           'Some description that will be'
+		   'printed to stdout if asked for'
+		   'help.'
+        )
+    )
+    parser.add_argument(
+        'action',
+        nargs='?',
+        help='The action or task to run.',
+        type=str,
+        choices=[
+           'one_positional_argument',
+		   'another_positional_argument'
+        ]
+    )
+    parser.add_argument(
+        '--verbose',
+        '-verbose',
+        nargs='?',
+        help=(
+            'Show more logs info.'
+        ),
+        type=str,
+        default=None
+    )
+    return parser
+```
+
+Control in `main` the presence of mandatory parameters:
+
+```python
+	...
+	if args.action in ['one_positional_argument', 'another_positional_argument']:
+		...
+    else:
+        parser.print_help()
+        quit()
+	...
+
+```
+
+# Ask for user input
+
+```python
+def ask_yes_or_no():
+	answer = input("Continue? [enter y(yes) or n(no)]\n")
+	entered_valid = False
+	while not entered_valid:
+		if answer.lower() in ["y"]:
+			logger.info('Proceeding...')
+			entered_valid = True
+		elif answer.lower() in ["n"]:
+			logger.info('Aborting...')
+			quit()
+		else:
+			entered_valid = False
+			print(f'Invalid input "{answer}"')
+			answer = input("Continue? [enter y or n]\n")
+```
+
+# Using logger
+
+Create a logger instance:
+
+```python
+import logging
+
+
+def create_logger(
+    name=__name__,
+    level='INFO'
+):
+    logger = logging.getLogger(name)
+    fh = logging.StreamHandler()
+    fh_formatter = logging.Formatter(
+      "[%(levelname)s][%(asctime)s][%(name)s:%(funcName)s] %(message)s"
+    )
+    fh.setFormatter(fh_formatter)
+    if not logging.getLogger(name).hasHandlers():
+        logger.addHandler(fh)
+    lvl = getattr(logging, level)
+    logger.setLevel(lvl)
+    return logger
+```
+
+Then invoke from script or somewhere else:
+
+```python
+#Some script
+...
+logger = create_logger('test_cases_collector', level='INFO')
+...
+
+```
+
+Change logging level
+
+```python
+logger.setLevel(logging.WARNING)
+```
+
+or by level name
+
+```python
+level = getattr(logging, level_name)
+logger.setLevel(level)
+```
 
 ***
 
