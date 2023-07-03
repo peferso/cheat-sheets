@@ -43,6 +43,18 @@ pd.to_datetime(a_date_string, format='%Y-%m-%d') + pd.DateOffset(months=nmonths)
 (t2 - t1).days
 ```
 
+## Pandarallel
+
+```python
+from pandarallel import pandarallel
+
+pandarallel.initialize(nb_workers=10, progress_bar=True)
+
+
+df['attributes'] = df['response'].parallel_apply(parse_attributes)
+```
+
+
 
 ## Remove timezone
 
