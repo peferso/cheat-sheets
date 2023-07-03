@@ -38,7 +38,8 @@ This content is also on Github pages (presented with a fancy default theme), fee
 ## python
 [python](./python/README.md)
 
-[python (Pandas)](./python-pandas/README.md)
+[python (Pandas - 1)](./python-pandas/README-1.md)
+[python (Pandas - 2)](./python-pandas/README-2.md)
 
 [python (Matplotlib)](./python-matplotlib/README.md)
 
