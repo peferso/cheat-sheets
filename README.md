@@ -40,6 +40,8 @@ This content is also on Github pages (presented with a fancy default theme), fee
 
 [python (Pandas)](./python-pandas/README.md)
 
+[python (Matplotlib)](./python-matplotlib/README.md)
+
 ## PostgreSQL
 
 [PostgreSQL](./postgresql/README.md)
