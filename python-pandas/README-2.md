@@ -1,6 +1,4 @@
-# Pandas
-
-# Others
+# Pandas - 2
 
 ## Managing excel files
 
