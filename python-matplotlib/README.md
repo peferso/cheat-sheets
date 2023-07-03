@@ -146,6 +146,46 @@ Save a figure to a file
 fig.savefig('my_picture.png', dpi = 200) # extension applied is png, but we can use others such as jpeg...
 ```
 
+# OLS fit plot
+
+Once we've made the OLS fit:
+
+```python
+import statsmodels.api as sm
+
+
+y = grouped_by_dec['percentage'].values
+X = grouped_by_dec['decile'].values
+X = sm.add_constant(X)
+model = sm.OLS(y, X)
+result = model.fit()
+```
+
+We can plot the data points and the regression line as follow:
+
+```python
+fig = plt.figure()
+ax = fig.add_axes([0.1,0.1,0.6*1.618,0.6])
+ax.scatter(X[:, 1], y, s=10)
+y_pred = result.predict(X)
+ax.plot(X[:, 1], y_pred, color='gray', linestyle='-')
+ax.set_xlabel('Decile')
+ax.set_ylabel('Percentage [%]')
+ax.text(
+	0.825,
+	0.925,
+	(
+		f'$R^2$={result.rsquared:.3f}\n'
+		r'$\rho_{Pearson}$'f'={correlation:.3f}'
+	),
+	horizontalalignment='left',
+	verticalalignment='center',
+	transform=ax.transAxes
+)
+ax.set_title(f'Month: {month}')
+plt.show()
+```
+
 # Seaborn
 
 ```python
