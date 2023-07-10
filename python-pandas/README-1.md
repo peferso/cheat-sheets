@@ -43,6 +43,21 @@ pd.to_datetime(a_date_string, format='%Y-%m-%d') + pd.DateOffset(months=nmonths)
 (t2 - t1).days
 ```
 
+In weeks 
+
+```python
+data['weeks_since_start_date'] = ledger_data.apply(
+    lambda df:
+        int(np.floor(
+            (
+                pd.to_datetime(the_date) -
+                pd.to_datetime(df['start_date'])
+            )/np.timedelta64(1, 'W')
+        )), 
+        axis=1
+)
+```
+
 ## Remove timezone
 
 ## Count number of rows and columns

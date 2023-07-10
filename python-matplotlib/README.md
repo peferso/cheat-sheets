@@ -146,6 +146,20 @@ Save a figure to a file
 fig.savefig('my_picture.png', dpi = 200) # extension applied is png, but we can use others such as jpeg...
 ```
 
+# Secondary or twin axis
+
+```python
+fg, ax = plt.subplots(1, 1, figsize=(1.618*6, 6))
+
+funded_data.groupby(['date']).size().plot.bar(ax=ax, label='volume')
+
+ax2 = ax.twinx()
+funded_data.groupby(['date'])['FLAG'].mean().plot(ax=ax2, color='black', linewidth=2.0, label='Flag rate')
+
+ax.legend()
+ax2.legend()
+```
+
 # OLS fit plot
 
 Once we've made the OLS fit:
