@@ -160,6 +160,10 @@ ax.legend()
 ax2.legend()
 ```
 
+# Rotate axis
+
+
+
 # OLS fit plot
 
 Once we've made the OLS fit:

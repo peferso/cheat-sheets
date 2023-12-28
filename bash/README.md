@@ -40,6 +40,66 @@ ps -fu username
 ps -fu username --sort=start_time
 ```
 
+# SystemD/systemctl
+
+Check logs/Status of a process
+
+```sh
+journalctl -u httpd.service
+```
+
+Start a service
+
+```sh
+systemctl start a_service.service
+```
+
+Stop a service
+
+```sh
+systemctl stop a_service.service
+```
+
+# Cron and Crontab
+
+Check system time:
+```sh
+timedatectl
+```
+
+Set local date time:
+```sh
+timedatectl set-timezone Europe/Madrid
+```
+
+Schedule a script run with a given user. As the user run
+
+```sh
+crontab -e
+```
+
+Example (run everyday a script at 13:55 h):
+
+```sh
+55 13 * * * /home/ec2-user/script_path/run-cleanhouse.sh
+```
+
+Check logs:
+
+```sh
+less /var/log/cron
+```
+
+# Logrotate
+
+Look to which services use logrotate
+
+```sh
+/etc/logrotate.d/
+```
+
+Sometimes apache web server may be restarted/reloaded, check it in `/etc/logrotate.d/httpd`.
+
 # Connectivity
 
 Get the ip address:

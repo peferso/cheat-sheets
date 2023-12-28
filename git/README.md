@@ -81,6 +81,14 @@ Create a new branch and switch to it
 git checkout -b new_branch_name
 ```
 
+# tags
+
+Checkout to a specific tagged version of the code.
+
+```sh
+git checkout tags/v2.1.3
+```
+
 ## List all branches
 ```sh
 git branch -a
