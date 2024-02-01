@@ -183,6 +183,26 @@ Unroll a tarball specifying the destination folder
 tar -xvf TARFILE -C DESTINATION_FOLDER
 ```
 
+# Zips
+
+Zip a folder 
+
+```sh
+zip -r "$zip_file" "$temp_dir"
+```
+
+Zip with password
+
+```sh
+zip -P "$zip_password" -r "$zip_file" "$temp_dir"
+```
+
+Flatten files in folder (omit folder itself in zip file)
+
+```sh
+zip -P "$zip_password" -r -j "$zip_file" "$temp_dir"
+```
+
 # ssh
 
 Ssh using an existing private key .pem file
