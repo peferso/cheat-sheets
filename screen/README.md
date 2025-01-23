@@ -1,6 +1,6 @@
 # Screen
 
-A custom .screenrc file
+A custom .screenrc file (see https://kdrossos.net/blog/15/)
 
 ```sh
 # File: ~/.screenrc
@@ -8,18 +8,6 @@ A custom .screenrc file
 
 # Deactivate the startup message of screen
 startup_message off
-
-# Vim like key bindings for moving around windows
-bind l focus right # C-a l goes right
-bind h focus left  # C-a h goes left
-bind k focus up    # C-a k goes up
-bind j focus down  # C-a j goes down
-
-# Bind keys for resizing
-bind L resize -h +10  # C-a L increases horizontally by 10
-bind H resize -h -10  # C-a H decreases horizontally by 10
-bind K resize -v +10  # C-a K increases vertically by 10
-bind J resize -v -10  # C-a K decreases vertically by 10
 
 # Setup hardstatus
 hardstatus off
