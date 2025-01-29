@@ -133,6 +133,8 @@ File can be ```*``` for all files in the working directory.
 
 File can be ```-r``` to search recursively in all files and directories contained in the working directory.
 
+**Find**
+
 Find all files with a given name pattern inside a folder
 ```sh
 find /folder -type f -name '*.html'
@@ -141,6 +143,19 @@ find /folder -type f -name '*.html'
 By exact name
 ```sh
 find -type f -name exact-name.ext
+```
+
+Other find commands:
+
+```sh
+find $LOCAL_PATH -type f -name "*.log" -exec rm -i {} \;   # Finds and deletes asking first. "\;" runs the exec one per file
+find $LOCAL_PATH -type f -name "*.log" -delete             # Finds and deletes
+find $LOCAL_PATH -maxdepth 1 -type d -empty -print         # Finds all empty directories
+find $LOCAL_PATH -type f -size +500k -exec ls -lh {} +     # Finds all files heavier than 500KiB. Final "+" makes more efficient running exec once for all files
+find $LOCAL_PATH -type f -newer reference_file             # Finds all files newer than reference file
+find $LOCAL_PATH -type f ! -newer reference_file           # Finds all files newer than reference file
+find $LOCAL_PATH -type f -newermt "YYYY-MM-DD HH:MM:SS"    # Finds all files newer than input datetime stamp
+find $LOCAL_PATH -type f ! -newermt "YYYY-MM-DD HH:MM:SS"  # Finds all files older than input datetime stamp
 ```
 
 Display json contents pretty:
