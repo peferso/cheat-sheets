@@ -237,6 +237,22 @@ folder1
 folder2/*
 !folder2/subfolder_or_file_included
 ```
+
+## Miscellanea
+
+### Adapt PS1 to show current branch in terminal 
+
+Add this to `.bashrc` or `.profile`...
+
+```sh
+if type __git_ps1 &>/dev/null; then
+    PS1="$(echo "$PS1" | sed 's/\\\$ $//')"'$( \
+        git rev-parse --is-inside-work-tree &>/dev/null && \
+        __git_ps1 "\[\033[38;5;250m\][\[\033[38;5;208m\]%s\[\033[38;5;250m\]]\[\033[0m\]" \
+    )\$ '
+fi
+```
+
 ***
 
 Return to **[main page](../README.md)**
